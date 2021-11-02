@@ -8,7 +8,9 @@ import json
 import os
 import sys
 import re
-import requests
+
+from internetarchive import get_session
+from requests import Session
 
 if not __package__:
     sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
@@ -20,6 +22,9 @@ from cdxsummary.analyzer import CDXAnalyzer
 
 ITEMURL = re.compile("^https?://archive.org/(?:download|details)/(?P<id>[^/]+)/?$", re.IGNORECASE)
 URLRE = re.compile("^https?://.+", re.IGNORECASE)
+
+REQSESSION = Session()
+IASESSION = get_session()
 
 
 def argument_parser():
@@ -54,7 +59,8 @@ def get_input_url(args):
 
 
 def get_stream_from_url(url):
-    r = requests.get(url, stream=True)
+    session = IASESSION if "archive.org/download/" in url else REQSESSION
+    r = session.get(url, stream=True)
     if r.ok:
         r.raw.decode_content = True
         stream = r.raw
@@ -90,8 +96,13 @@ def main():
             report = cdxanalizer.load(b"".join(input_stream))
         else:
             report = cdxanalizer(input_stream)
-    except (Exception, OSError) as e:
+    except OSError as e:
         sys.exit(e)
+    except Exception as e:
+        print(e, file=sys.stderr)
+        if str(e).startswith("403") and "archive.org/download/" in input_url and not IASESSION.cookies:
+            print("\nIf you have access to this private Internet Archive file, configure your credentials using the 'ia' CLI tool and try again.\n\nDocumentation: https://archive.org/services/docs/api/internetarchive/quickstart.html#configuring", file=sys.stderr)
+        sys.exit(1)
 
     try:
         input_stream.close()

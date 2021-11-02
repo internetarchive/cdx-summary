@@ -5,6 +5,7 @@ FROM        python:3
 WORKDIR     /app
 
 RUN         pip install \
+                internetarchive \
                 humanize \
                 requests \
                 rich
