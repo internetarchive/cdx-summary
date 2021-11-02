@@ -1,2 +1,2 @@
 __NAME = "cdxsummary"
-__VERSION = "0.1.0b2"
+__VERSION = "0.1.1b1"
