@@ -21,6 +21,21 @@ $ docker image build -t cdxsummary .
 $ docker container run -it --rm cdxsummary
 ```
 
+## Features
+
+* Summarize local CDX files or remote ones over HTTP
+* Handle `gz` and `bz2` compression seamlessly
+* Handle CDX data input to `STDIN` from pipe
+* Support [Internet Archive Petabox web item](https://archive.org/services/docs/api/items.html) summarization
+* Seamless authorization to Internet Archive via the [`ia` CLI tool](https://archive.org/services/docs/api/internetarchive/quickstart.html#configuring)
+* Human-friendly summary by default, but support summarized or detailed JSON reports
+* Self-aware, as the input can be a previously generated JSON report in place of CDX data
+* Summary includes:
+  * An overview of numbers of captures, consecutive unique URIs, unique hosts, accumulated WARC records size, and the first and last datetimes
+  * A grid of media types and status codes and their respective capture counts
+  * Top-N (configurable) hosts and their capture counts
+  * A random sample of N (configurable) memento URIs for `200 OK` HTML pages
+
 ## Usage
 
 ```
