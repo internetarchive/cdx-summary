@@ -129,7 +129,7 @@ class ReportSummarizer():
         self._print(f"Random Sample of {intcomma(len(samples))} OK HTML Mementos", width=50, justify="center", style="italic", highlight=False)
         self._print(f" {'─' * 48}")
         for dt, url in samples:
-            self._print(f" * [default][dim]{self._replayurl}[/dim]/[cyan]{dt}[/cyan]/[magenta]{url}[/magenta][/default]", soft_wrap=True)
+            self._print(f" * [dim]{self._replayurl}[/dim]/[cyan]{dt}[/cyan]/[magenta]{url}[/magenta]", soft_wrap=True, highlight=False)
 
 
     def print_summary(self):
