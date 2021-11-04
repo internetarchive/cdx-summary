@@ -25,6 +25,10 @@ class CDXAnalyzer():
         return {".".join(reversed(host.split(","))): count for host, count in th}
 
 
+    def _segment_length(self, seg, sep):
+        return seg.strip(sep).count(sep) + 1 if seg.strip(sep) else 0
+
+
     def __init__(self, samplesize=0, urlsampler=None, maxhosts=None, outfile=sys.stdout):
         self._sampler = urlsampler
         if not self._sampler:
@@ -38,6 +42,7 @@ class CDXAnalyzer():
         self._last = "0" * 14
         self._tophosts = Counter()
         self._media = defaultdict(lambda: defaultdict(int))
+        self._pathquery = defaultdict(lambda: defaultdict(int))
         self._print = Console(file=outfile).print
 
 
@@ -51,6 +56,7 @@ class CDXAnalyzer():
             "last": self._last.replace("0" * 14, ""),
             "tophosts": self._top_hosts(self._tophosts.most_common(self._maxhosts)),
             "media": self._media,
+            "pathquery": self._pathquery,
             "samples": list(self._sampler.samples())
         }
 
@@ -65,6 +71,7 @@ class CDXAnalyzer():
         self._last = report["last"]
         self._tophosts = Counter(report["tophosts"])
         self._media = report["media"]
+        self._pathquery = report["pathquery"]
         self._sampler._samples = [(dt, url) for dt, url in report["samples"]]
         return self._report()
 
@@ -88,10 +95,12 @@ class CDXAnalyzer():
                 except ValueError:
                     pass
                 host, _, path = parts[0].partition(")")
+                path, _, query = path.partition("?")
                 self._tophosts[host] += 1
                 if prev_host != host:
                     prev_host = host
                     self._hosts += 1
+                self._pathquery[f"P{self._segment_length(path, '/')}"][f"Q{self._segment_length(query, '&')}"] += 1
                 self._media[parts[3]][parts[4]] += 1
                 self._sampler(parts)
         return self._report()
