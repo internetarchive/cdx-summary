@@ -33,6 +33,7 @@ $ docker container run -it --rm cdxsummary
 * Summary includes:
   * An overview of numbers of captures, consecutive unique URIs, unique hosts, accumulated WARC records size, and the first and last datetimes
   * A grid of media types and status codes and their respective capture counts
+  * A grid of path and query segment length and their respective capture counts
   * Top-N (configurable) hosts and their capture counts
   * A random sample of N (configurable) memento URIs for `200 OK` HTML pages
 
