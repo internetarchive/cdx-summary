@@ -25,6 +25,8 @@ URLRE = re.compile("^https?://.+", re.IGNORECASE)
 
 REQSESSION = Session()
 IASESSION = get_session()
+REQSESSION.headers.update({"User-Agent": f"{__NAME}/{__VERSION}"})
+IASESSION.headers.update({"User-Agent": f"{__NAME}/{__VERSION}"})
 
 
 def argument_parser():
