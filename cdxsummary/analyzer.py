@@ -45,10 +45,10 @@ class CDXAnalyzer():
         return {
             "captures": self._captures,
             "urls": self._urls,
+            "hosts": self._hosts,
             "bytes": self._bytes,
             "first": self._first.replace("9" * 14, ""),
             "last": self._last.replace("0" * 14, ""),
-            "hosts": self._hosts,
             "tophosts": self._top_hosts(self._tophosts.most_common(self._maxhosts)),
             "media": self._media,
             "samples": list(self._sampler.samples())
