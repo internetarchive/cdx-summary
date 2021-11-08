@@ -88,7 +88,7 @@ class ReportSummarizer():
         self._summary = {
             **report,
             "pathquery": self._path_query_grid(report["pathquery"]),
-            "media": self._mime_status_grid(report["media"])
+            "mimestatus": self._mime_status_grid(report["mimestatus"])
         }
 
 
@@ -114,13 +114,13 @@ class ReportSummarizer():
 
 
     def print_mimestatus_grid(self):
-        media = self._summary["media"]
+        mimestatus = self._summary["mimestatus"]
         table = Table(title="MIME Type and Status Code Distribution", box=box.HORIZONTALS, show_header=True, show_footer=True, header_style="bold magenta", footer_style="bold magenta")
         table.add_column("MIME", "TOTAL", style="bold cyan")
         for code in self.CODEGROUPS:
-            table.add_column(code, intcomma(sum([codes[code] for codes in media.values()])), justify="right")
+            table.add_column(code, intcomma(sum([codes[code] for codes in mimestatus.values()])), justify="right")
         table.add_column("TOTAL", intcomma(self._summary["captures"]), style="bold cyan", justify="right")
-        for mime, codes in media.items():
+        for mime, codes in mimestatus.items():
             row_total = sum(codes.values())
             if row_total:
                 table.add_row(mime, *map(intcomma, codes.values()), intcomma(row_total))

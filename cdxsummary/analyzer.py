@@ -41,7 +41,7 @@ class CDXAnalyzer():
         self._first = "9" * 14
         self._last = "0" * 14
         self._tophosts = Counter()
-        self._media = defaultdict(lambda: defaultdict(int))
+        self._mimestatus = defaultdict(lambda: defaultdict(int))
         self._pathquery = defaultdict(lambda: defaultdict(int))
         self._print = Console(file=outfile).print
 
@@ -55,7 +55,7 @@ class CDXAnalyzer():
             "first": self._first.replace("9" * 14, ""),
             "last": self._last.replace("0" * 14, ""),
             "tophosts": self._top_hosts(self._tophosts.most_common(self._maxhosts)),
-            "media": self._media,
+            "mimestatus": self._mimestatus,
             "pathquery": self._pathquery,
             "samples": list(self._sampler.samples())
         }
@@ -70,7 +70,7 @@ class CDXAnalyzer():
         self._first = report["first"]
         self._last = report["last"]
         self._tophosts = Counter(report["tophosts"])
-        self._media = report["media"]
+        self._mimestatus = report["mimestatus"]
         self._pathquery = report["pathquery"]
         self._sampler._samples = [(dt, url) for dt, url in report["samples"]]
         return self._report()
@@ -101,7 +101,7 @@ class CDXAnalyzer():
                     prev_host = host
                     self._hosts += 1
                 self._pathquery[f"P{self._segment_length(path, '/')}"][f"Q{self._segment_length(query, '&')}"] += 1
-                self._media[parts[3]][parts[4]] += 1
+                self._mimestatus[parts[3]][parts[4]] += 1
                 self._sampler(parts)
         return self._report()
 
