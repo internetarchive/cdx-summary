@@ -9,24 +9,21 @@ from rich.json import JSON
 if not __package__:
     sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
+from cdxsummary.parser import CDXRecord
 from cdxsummary.sampler import BaseSampler, DynamicRandomStreamSampler
 
 
 class CDXAnalyzer():
-    def _sample_candidate(self, parts):
-        return parts[4] == "200" and parts[3] == "text/html" and not parts[0].endswith("/robots.txt")
+    def _sample_candidate(self, cdxrec):
+        return cdxrec.status == "200" and cdxrec.mime == "text/html" and not cdxrec.surt.endswith("/robots.txt")
 
 
-    def _sample_parts(self, parts):
-        return (parts[1], parts[2].replace(":80/", "", 1))
+    def _sample_parts(self, cdxrec):
+        return (cdxrec.datetime, cdxrec.url.replace(":80/", "", 1))
 
 
     def _top_hosts(self, th):
         return {".".join(reversed(host.split(","))): count for host, count in th}
-
-
-    def _segment_length(self, seg, sep):
-        return seg.strip(sep).count(sep) + 1 if seg.strip(sep) else 0
 
 
     def __init__(self, samplesize=0, urlsampler=None, maxhosts=None, outfile=sys.stdout):
@@ -77,32 +74,32 @@ class CDXAnalyzer():
 
 
     def __call__(self, cdx):
-        prev_url = ""
+        prev_surt = ""
         prev_host = ""
         for line in cdx:
-            parts = line.decode().split()
-            if len(parts) == 11:
-                self._captures += 1
-                if prev_url != parts[0]:
-                    prev_url = parts[0]
-                    self._urls += 1
-                if self._first > parts[1]:
-                    self._first = parts[1]
-                if self._last < parts[1]:
-                    self._last = parts[1]
-                try:
-                    self._bytes += int(parts[8])
-                except ValueError:
-                    pass
-                host, _, path = parts[0].partition(")")
-                path, _, query = path.partition("?")
-                self._tophosts[host] += 1
-                if prev_host != host:
-                    prev_host = host
-                    self._hosts += 1
-                self._pathquery[f"P{self._segment_length(path, '/')}"][f"Q{self._segment_length(query, '&')}"] += 1
-                self._mimestatus[parts[3]][parts[4]] += 1
-                self._sampler(parts)
+            try:
+                cr = CDXRecord(line.decode())
+            except:
+                continue
+            self._captures += 1
+            if prev_surt != cr.surt:
+                prev_surt = cr.surt
+                self._urls += 1
+            if self._first > cr.datetime:
+                self._first = cr.datetime
+            if self._last < cr.datetime:
+                self._last = cr.datetime
+            try:
+                self._bytes += int(cr.bytes)
+            except ValueError:
+                pass
+            self._tophosts[cr.host] += 1
+            if prev_host != cr.host:
+                prev_host = cr.host
+                self._hosts += 1
+            self._pathquery[f"P{cr.pathlen}"][f"Q{cr.querylen}"] += 1
+            self._mimestatus[cr.mime][cr.status] += 1
+            self._sampler(cr)
         return self._report()
 
 
