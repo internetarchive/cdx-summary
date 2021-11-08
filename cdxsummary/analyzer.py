@@ -18,7 +18,7 @@ class CDXAnalyzer():
 
 
     def _sample_parts(self, parts):
-        return (parts[1], parts[2])
+        return (parts[1], parts[2].replace(":80/", "", 1))
 
 
     def _top_hosts(self, th):
