@@ -31,7 +31,6 @@ IASESSION.headers.update({"User-Agent": f"{__NAME}/{__VERSION}"})
 
 def argument_parser():
     ap = argparse.ArgumentParser(prog=__NAME, description="Summarize web archive capture index (CDX) files.")
-    ap.add_argument("-a", "--api", nargs="?", const="0.0.0.0:5000", metavar="HOST:PORT", help="Run a CDX summarizer API server on the given host and port (default: 0.0.0.0:5000)")
     ap.add_argument("-i", "--item", action="store_true", help="Treat the input argument as a Petabox item identifier instead of a file path")
     ap.add_argument("-j", "--json", action="store_true", help="Generate summary in JSON format")
     ap.add_argument("-l", "--load", action="store_true", help="Load JSON report instead of CDX")
@@ -81,9 +80,6 @@ def get_stream_from_file(file):
 def main():
     ap = argument_parser()
     args = ap.parse_args()
-
-    if args.api:
-        sys.exit("[TODO] API server is not implemented yet!")
 
     if os.isatty(sys.stdin.fileno()) and not args.input:
         ap.print_help(file=sys.stderr)
