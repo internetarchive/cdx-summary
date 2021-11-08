@@ -13,6 +13,7 @@ from rich.table import Table, box
 class ReportSummarizer():
     PSEGMENTS = [f"P{i}" for i in range(5)] + ["Other"]
     QSEGMENTS = [f"Q{i}" for i in range(5)] + ["Other"]
+    MONTHS = [f"{i:02}" for i in range(1, 13)]
     CODEGROUPS = ["2XX", "3XX", "4XX", "5XX", "Other"]
 
     MIMEMAP = {
@@ -64,6 +65,15 @@ class ReportSummarizer():
         return grid
 
 
+    def _year_month_grid(self, ym):
+        grid = {}
+        for year in sorted(ym):
+            grid[year] = {}
+            for month in self.MONTHS:
+                grid[year][month] = ym[year].get(month, 0)
+        return grid
+
+
     def _mime_status_grid(self, ms):
         grid = {mime: {code: 0 for code in self.CODEGROUPS} for mime in self.MIMEMAP.values()}
         for mime, codes in ms.items():
@@ -88,6 +98,7 @@ class ReportSummarizer():
         self._summary = {
             **report,
             "pathquery": self._path_query_grid(report["pathquery"]),
+            "yearmonth": self._year_month_grid(report["yearmonth"]),
             "mimestatus": self._mime_status_grid(report["mimestatus"])
         }
 
@@ -141,6 +152,20 @@ class ReportSummarizer():
         self._print(table)
 
 
+    def print_yearmonth_grid(self):
+        yearmonth = self._summary["yearmonth"]
+        table = Table(title="Year and Month Distribution", box=box.HORIZONTALS, show_header=True, show_footer=(len(yearmonth) > 1), header_style="bold magenta", footer_style="bold magenta")
+        table.add_column("Year", "TOTAL", style="bold cyan")
+        for month in self.MONTHS:
+            table.add_column(month, intcomma(sum([months[month] for months in yearmonth.values()])), justify="right")
+        table.add_column("TOTAL", intcomma(self._summary["captures"]), style="bold cyan", justify="right")
+        for year, months in yearmonth.items():
+            row_total = sum(months.values())
+            if row_total:
+                table.add_row(year, *map(intcomma, months.values()), intcomma(row_total))
+        self._print(table)
+
+
     def print_tophosts(self):
         tophosts = self._summary["tophosts"]
         others = self._summary["hosts"] - len(tophosts)
@@ -169,6 +194,8 @@ class ReportSummarizer():
         self.print_mimestatus_grid()
         print("")
         self.print_pathquery_grid()
+        print("")
+        self.print_yearmonth_grid()
         print("")
         self.print_tophosts()
         print("")

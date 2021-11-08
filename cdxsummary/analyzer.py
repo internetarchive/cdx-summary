@@ -40,6 +40,7 @@ class CDXAnalyzer():
         self._tophosts = Counter()
         self._mimestatus = defaultdict(lambda: defaultdict(int))
         self._pathquery = defaultdict(lambda: defaultdict(int))
+        self._yearmonth = defaultdict(lambda: defaultdict(int))
         self._print = Console(file=outfile).print
 
 
@@ -54,6 +55,7 @@ class CDXAnalyzer():
             "tophosts": self._top_hosts(self._tophosts.most_common(self._maxhosts)),
             "mimestatus": self._mimestatus,
             "pathquery": self._pathquery,
+            "yearmonth": self._yearmonth,
             "samples": list(self._sampler.samples())
         }
 
@@ -69,6 +71,7 @@ class CDXAnalyzer():
         self._tophosts = Counter(report["tophosts"])
         self._mimestatus = report["mimestatus"]
         self._pathquery = report["pathquery"]
+        self._yearmonth = report["yearmonth"]
         self._sampler._samples = [(dt, url) for dt, url in report["samples"]]
         return self._report()
 
@@ -98,6 +101,7 @@ class CDXAnalyzer():
                 prev_host = cr.host
                 self._hosts += 1
             self._pathquery[f"P{cr.pathlen}"][f"Q{cr.querylen}"] += 1
+            self._yearmonth[cr.year][cr.month] += 1
             self._mimestatus[cr.mime][cr.status] += 1
             self._sampler(cr)
         return self._report()
