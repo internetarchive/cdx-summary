@@ -43,7 +43,7 @@ $ docker container run -it --rm cdxsummary
 
 ```
 $ cdxsummary --help
-usage: cdxsummary [-h] [-a [HOST:PORT]] [-i] [-j] [-l] [-o [FILE]] [-r] [-s [N]] [-t [N]] [-v] [input]
+usage: cdxsummary [-h] [-a [QUERY]] [-i] [-j] [-l] [-o [FILE]] [-r] [-s [N]] [-t [N]] [-v] [input]
 
 Summarize web archive capture index (CDX) files.
 
@@ -52,15 +52,13 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -a [HOST:PORT], --api [HOST:PORT]
-                        Run a CDX summarizer API server on the given host and port (default: 0.0.0.0:5000)
+  -a [QUERY], --api [QUERY]
+                        CDX API query parameters (default: 'matchType=exact'), treats the last argument as the lookup URL
   -i, --item            Treat the input argument as a Petabox item identifier instead of a file path
   -j, --json            Generate summary in JSON format
   -l, --load            Load JSON report instead of CDX
   -o [FILE], --out [FILE]
                         Write output to the given file (default: STDOUT)
-  -q [QUERY], --query [QUERY]
-                        CDX API query parameters (default: 'matchType=exact'), treats last argument as URL
   -r, --report          Generate non-summarized JSON report
   -s [N], --samples [N]
                         Number of sample memento URLs in summary (default: 10)

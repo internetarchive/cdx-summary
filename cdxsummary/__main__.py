@@ -36,11 +36,11 @@ errprint = Console(stderr=True, style="red", highlight=False).print
 
 def argument_parser():
     ap = argparse.ArgumentParser(prog=__NAME, description="Summarize web archive capture index (CDX) files.")
+    ap.add_argument("-a", "--api", nargs="?", const="matchType=exact", metavar="QUERY", help="CDX API query parameters (default: 'matchType=exact'), treats the last argument as the lookup URL")
     ap.add_argument("-i", "--item", action="store_true", help="Treat the input argument as a Petabox item identifier instead of a file path")
     ap.add_argument("-j", "--json", action="store_true", help="Generate summary in JSON format")
     ap.add_argument("-l", "--load", action="store_true", help="Load JSON report instead of CDX")
     ap.add_argument("-o", "--out", nargs="?", type=argparse.FileType("w"), default=sys.stdout, metavar="FILE", help="Write output to the given file (default: STDOUT)")
-    ap.add_argument("-q", "--query", nargs="?", const="matchType=exact", help="CDX API query parameters (default: 'matchType=exact'), treats last argument as URL")
     ap.add_argument("-r", "--report", action="store_true", help="Generate non-summarized JSON report")
     ap.add_argument("-s", "--samples", nargs="?", type=int, default=10, metavar="N", help="Number of sample memento URLs in summary (default: 10)")
     ap.add_argument("-t", "--tophosts", nargs="?", type=int, default=10, metavar="N", help="Number of hosts with maximum captures in summary (default: 10)")
@@ -101,8 +101,8 @@ def get_stream_from_file(file):
 
 
 def get_input_stream(args):
-    if args.query and args.input:
-        url = f"{CDXAPI}?{args.query}&{urlencode({'url': args.input})}"
+    if args.api and args.input:
+        url = f"{CDXAPI}?{args.api}&{urlencode({'url': args.input})}"
         return get_stream_from_api(url)
     input_url = get_input_url(args)
     if input_url:
@@ -114,9 +114,9 @@ def main():
     ap = argument_parser()
     args = ap.parse_args()
 
-    if args.query and args.query != "matchType=exact" and not args.input:
-        args.input = args.query
-        args.query = "matchType=exact"
+    if args.api and args.api != "matchType=exact" and not args.input:
+        args.input = args.api
+        args.api = "matchType=exact"
 
     if os.isatty(sys.stdin.fileno()) and not args.input:
         ap.print_help(file=sys.stderr)
