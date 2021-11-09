@@ -11,6 +11,7 @@ import re
 
 from internetarchive import get_session
 from requests import Session
+from rich.console import Console
 from urllib.parse import urlencode
 
 if not __package__:
@@ -29,6 +30,8 @@ REQSESSION = Session()
 IASESSION = get_session()
 REQSESSION.headers.update({"User-Agent": f"{__NAME}/{__VERSION}"})
 IASESSION.headers.update({"User-Agent": f"{__NAME}/{__VERSION}"})
+
+errprint = Console(stderr=True, style="red", highlight=False).print
 
 
 def argument_parser():
@@ -65,7 +68,9 @@ def get_input_url(args):
 def get_stream_from_api(url):
     pages = int(REQSESSION.get(f"{url}&showNumPages=true").text)
     for page in range(pages):
-        r = REQSESSION.get(f"{url}&page={page}", stream=True)
+        pageurl = f"{url}&page={page}"
+        errprint(f"Downloading [[cyan]{page + 1}/{pages}[/cyan]]: [magenta]{pageurl}[/magenta]")
+        r = REQSESSION.get(pageurl, stream=True)
         if r.ok:
             r.raw.decode_content = True
             for line in r.raw:
@@ -73,6 +78,7 @@ def get_stream_from_api(url):
 
 
 def get_stream_from_url(url):
+    errprint(f"Downloading remote file: [magenta]{url}[/magenta]")
     session = IASESSION if "archive.org/download/" in url else REQSESSION
     r = session.get(url, stream=True)
     if r.ok:
@@ -87,6 +93,10 @@ def get_stream_from_url(url):
 
 
 def get_stream_from_file(file):
+    if not file or file == "-":
+        errprint(f"Summarizing piped data: [magenta]STDIN[/magenta]")
+    else:
+        errprint(f"Summarizing local file: [magenta]{file}[/magenta]")
     return fileinput.input(files=file, mode="rb", openhook=fileinput.hook_compressed)
 
 
@@ -120,12 +130,10 @@ def main():
             report = cdxanalizer.load(b"".join(input_stream))
         else:
             report = cdxanalizer(input_stream)
-    except OSError as e:
-        sys.exit(e)
-    except Exception as e:
-        print(e, file=sys.stderr)
-        if str(e).startswith("403") and "archive.org/download/" in input_url and not IASESSION.cookies:
-            print("\nIf you have access to this private Internet Archive file, configure your credentials using the 'ia' CLI tool and try again.\n\nDocumentation: https://archive.org/services/docs/api/internetarchive/quickstart.html#configuring", file=sys.stderr)
+    except (OSError, Exception) as e:
+        errprint(e)
+        if str(e).startswith("403") and "archive.org/download/" in str(e) and not IASESSION.cookies:
+            errprint("\nIf you have access to this private Internet Archive file, configure your credentials using the 'ia' CLI tool and try again.\n[white]Documentation:[/white] [magenta]https://archive.org/services/docs/api/internetarchive/quickstart.html#configuring[/magenta]")
         sys.exit(1)
 
     try:
