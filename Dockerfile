@@ -4,6 +4,8 @@ FROM        python:3
 
 WORKDIR     /app
 
+ENTRYPOINT  ["cdxsummary"]
+
 RUN         pip install \
                 internetarchive \
                 humanize \
@@ -12,5 +14,3 @@ RUN         pip install \
 
 COPY        . ./
 RUN         python3 setup.py install
-
-ENTRYPOINT  ["cdxsummary"]
