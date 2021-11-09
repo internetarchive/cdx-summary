@@ -84,6 +84,10 @@ class ReportSummarizer():
         return grid
 
 
+    def _non_zero_grid_rows(self, grid):
+        return sum([bool(sum(v.values())) for v in grid.values()])
+
+
     def _natural_date(self, dt):
         try:
             return naturaldate(datetime.strptime(dt, "%Y%m%d%H%M%S"))
@@ -126,7 +130,8 @@ class ReportSummarizer():
 
     def print_mimestatus_grid(self):
         mimestatus = self._summary["mimestatus"]
-        table = Table(title="MIME Type and Status Code Distribution", box=box.HORIZONTALS, show_header=True, show_footer=True, header_style="bold magenta", footer_style="bold magenta")
+        manyrows = self._non_zero_grid_rows(mimestatus) > 1
+        table = Table(title="MIME Type and Status Code Distribution", box=box.HORIZONTALS, show_header=True, show_footer=manyrows, header_style="bold magenta", footer_style="bold magenta")
         table.add_column("MIME", "TOTAL", style="bold cyan")
         for code in self.CODEGROUPS:
             table.add_column(code, intcomma(sum([codes[code] for codes in mimestatus.values()])), justify="right")
@@ -140,7 +145,8 @@ class ReportSummarizer():
 
     def print_pathquery_grid(self):
         pathquery = self._summary["pathquery"]
-        table = Table(title="Path and Query Segments", box=box.HORIZONTALS, show_header=True, show_footer=True, header_style="bold magenta", footer_style="bold magenta")
+        manyrows = self._non_zero_grid_rows(pathquery) > 1
+        table = Table(title="Path and Query Segments", box=box.HORIZONTALS, show_header=True, show_footer=manyrows, header_style="bold magenta", footer_style="bold magenta")
         table.add_column("Path", "TOTAL", style="bold cyan")
         for query in self.QSEGMENTS:
             table.add_column(query, intcomma(sum([queries[query] for queries in pathquery.values()])), justify="right")
@@ -154,7 +160,8 @@ class ReportSummarizer():
 
     def print_yearmonth_grid(self):
         yearmonth = self._summary["yearmonth"]
-        table = Table(title="Year and Month Distribution", box=box.HORIZONTALS, show_header=True, show_footer=(len(yearmonth) > 1), header_style="bold magenta", footer_style="bold magenta")
+        manyrows = self._non_zero_grid_rows(yearmonth) > 1
+        table = Table(title="Year and Month Distribution", box=box.HORIZONTALS, show_header=True, show_footer=manyrows, header_style="bold magenta", footer_style="bold magenta")
         table.add_column("Year", "TOTAL", style="bold cyan")
         for month in self.MONTHS:
             table.add_column(month, intcomma(sum([months[month] for months in yearmonth.values()])), justify="right")
