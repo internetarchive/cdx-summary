@@ -116,7 +116,7 @@ class ReportSummarizer():
 
 
     def print_overview(self):
-        table = Table(title="CDX Overview", box=box.HORIZONTALS, show_header=False)
+        table = Table(title="CDX Overview", box=box.HORIZONTALS, show_header=False, padding=(0, 0))
         table.add_column(style="bold cyan")
         table.add_column(style="bold magenta", justify="right")
         table.add_row("Total Captures in CDX", intcomma(self._summary["captures"]))
@@ -131,11 +131,11 @@ class ReportSummarizer():
     def print_mimestatus_grid(self):
         mimestatus = self._summary["mimestatus"]
         manyrows = self._non_zero_grid_rows(mimestatus) > 1
-        table = Table(title="MIME Type and Status Code Distribution", box=box.HORIZONTALS, show_header=True, show_footer=manyrows, header_style="bold magenta", footer_style="bold magenta")
-        table.add_column("MIME", "TOTAL", style="bold cyan")
+        table = Table(title="MIME Type and Status Code Distribution", box=box.HORIZONTALS, show_header=True, show_footer=manyrows, header_style="bold magenta", footer_style="bold magenta", padding=(0, 0))
+        table.add_column("MIME", "TOTAL", style="bold cyan", overflow="fold")
         for code in self.CODEGROUPS:
-            table.add_column(code, intcomma(sum([codes[code] for codes in mimestatus.values()])), justify="right")
-        table.add_column("TOTAL", intcomma(self._summary["captures"]), style="bold cyan", justify="right")
+            table.add_column(code, intcomma(sum([codes[code] for codes in mimestatus.values()])), justify="right", overflow="fold")
+        table.add_column("TOTAL", intcomma(self._summary["captures"]), style="bold cyan", justify="right", overflow="fold")
         for mime, codes in mimestatus.items():
             row_total = sum(codes.values())
             if row_total:
@@ -146,11 +146,11 @@ class ReportSummarizer():
     def print_pathquery_grid(self):
         pathquery = self._summary["pathquery"]
         manyrows = self._non_zero_grid_rows(pathquery) > 1
-        table = Table(title="Path and Query Segments", box=box.HORIZONTALS, show_header=True, show_footer=manyrows, header_style="bold magenta", footer_style="bold magenta")
-        table.add_column("Path", "TOTAL", style="bold cyan")
+        table = Table(title="Path and Query Segments", box=box.HORIZONTALS, show_header=True, show_footer=manyrows, header_style="bold magenta", footer_style="bold magenta", padding=(0, 0))
+        table.add_column("Path", "TOTAL", style="bold cyan", overflow="fold")
         for query in self.QSEGMENTS:
-            table.add_column(query, intcomma(sum([queries[query] for queries in pathquery.values()])), justify="right")
-        table.add_column("TOTAL", intcomma(self._summary["captures"]), style="bold cyan", justify="right")
+            table.add_column(query, intcomma(sum([queries[query] for queries in pathquery.values()])), justify="right", overflow="fold")
+        table.add_column("TOTAL", intcomma(self._summary["captures"]), style="bold cyan", justify="right", overflow="fold")
         for path, queries in pathquery.items():
             row_total = sum(queries.values())
             if row_total:
@@ -161,11 +161,11 @@ class ReportSummarizer():
     def print_yearmonth_grid(self):
         yearmonth = self._summary["yearmonth"]
         manyrows = self._non_zero_grid_rows(yearmonth) > 1
-        table = Table(title="Year and Month Distribution", box=box.HORIZONTALS, show_header=True, show_footer=manyrows, header_style="bold magenta", footer_style="bold magenta")
-        table.add_column("Year", "TOTAL", style="bold cyan")
+        table = Table(title="Year and Month Distribution", box=box.HORIZONTALS, show_header=True, show_footer=manyrows, header_style="bold magenta", footer_style="bold magenta", padding=(0, 0))
+        table.add_column("Year", "TOTAL", style="bold cyan", overflow="fold")
         for month in self.MONTHS:
-            table.add_column(month, intcomma(sum([months[month] for months in yearmonth.values()])), justify="right")
-        table.add_column("TOTAL", intcomma(self._summary["captures"]), style="bold cyan", justify="right")
+            table.add_column(month, intcomma(sum([months[month] for months in yearmonth.values()])), justify="right", overflow="fold")
+        table.add_column("TOTAL", intcomma(self._summary["captures"]), style="bold cyan", justify="right", overflow="fold")
         for year, months in yearmonth.items():
             row_total = sum(months.values())
             if row_total:
@@ -176,9 +176,9 @@ class ReportSummarizer():
     def print_tophosts(self):
         tophosts = self._summary["tophosts"]
         others = self._summary["hosts"] - len(tophosts)
-        table = Table(title=f"Top {len(tophosts)} Out of {intcomma(self._summary['hosts'])} Hosts", box=box.HORIZONTALS, show_header=True, show_footer=(others > 0), header_style="bold magenta", footer_style="bold magenta")
-        table.add_column("Host", f"OTHERS ({intcomma(others)} Hosts)", style="bold cyan")
-        table.add_column("Captures", intcomma(self._summary["captures"] - sum(tophosts.values())), justify="right")
+        table = Table(title=f"Top {len(tophosts)} Out of {intcomma(self._summary['hosts'])} Hosts", box=box.HORIZONTALS, show_header=True, show_footer=(others > 0), header_style="bold magenta", footer_style="bold magenta", padding=(0, 0))
+        table.add_column("Host", f"OTHERS ({intcomma(others)} Hosts)", style="bold cyan", overflow="fold")
+        table.add_column("Captures", intcomma(self._summary["captures"] - sum(tophosts.values())), justify="right", overflow="fold")
         for host, count in tophosts.items():
             table.add_row(host, intcomma(count))
         self._print(table)
