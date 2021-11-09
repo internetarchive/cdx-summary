@@ -11,6 +11,7 @@ import re
 
 from internetarchive import get_session
 from requests import Session
+from urllib.parse import urlencode
 
 if not __package__:
     sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
@@ -20,6 +21,7 @@ from cdxsummary.summarizer import ReportSummarizer
 from cdxsummary.analyzer import CDXAnalyzer
 
 
+CDXAPI = os.getenv("CDXAPI", "https://web.archive.org/cdx/search")
 ITEMURL = re.compile("^https?://archive.org/(?:download|details)/(?P<id>[^/]+)/?$", re.IGNORECASE)
 URLRE = re.compile("^https?://.+", re.IGNORECASE)
 
@@ -35,6 +37,7 @@ def argument_parser():
     ap.add_argument("-j", "--json", action="store_true", help="Generate summary in JSON format")
     ap.add_argument("-l", "--load", action="store_true", help="Load JSON report instead of CDX")
     ap.add_argument("-o", "--out", nargs="?", type=argparse.FileType("w"), default=sys.stdout, metavar="FILE", help="Write output to the given file (default: STDOUT)")
+    ap.add_argument("-q", "--query", nargs="?", const="matchType=exact", help="CDX API query parameters (default: 'matchType=exact'), treats last argument as URL")
     ap.add_argument("-r", "--report", action="store_true", help="Generate non-summarized JSON report")
     ap.add_argument("-s", "--samples", nargs="?", type=int, default=10, metavar="N", help="Number of sample memento URLs in summary (default: 10)")
     ap.add_argument("-t", "--tophosts", nargs="?", type=int, default=10, metavar="N", help="Number of hosts with maximum captures in summary (default: 10)")
@@ -59,6 +62,16 @@ def get_input_url(args):
         return args.input
 
 
+def get_stream_from_api(url):
+    pages = int(REQSESSION.get(f"{url}&showNumPages=true").text)
+    for page in range(pages):
+        r = REQSESSION.get(f"{url}&page={page}", stream=True)
+        if r.ok:
+            r.raw.decode_content = True
+            for line in r.raw:
+                yield line
+
+
 def get_stream_from_url(url):
     session = IASESSION if "archive.org/download/" in url else REQSESSION
     r = session.get(url, stream=True)
@@ -77,17 +90,30 @@ def get_stream_from_file(file):
     return fileinput.input(files=file, mode="rb", openhook=fileinput.hook_compressed)
 
 
+def get_input_stream(args):
+    if args.query and args.input:
+        url = f"{CDXAPI}?{args.query}&{urlencode({'url': args.input})}"
+        return get_stream_from_api(url)
+    input_url = get_input_url(args)
+    if input_url:
+        return get_stream_from_url(input_url)
+    return get_stream_from_file(args.input)
+
+
 def main():
     ap = argument_parser()
     args = ap.parse_args()
+
+    if args.query and args.query != "matchType=exact" and not args.input:
+        args.input = args.query
+        args.query = "matchType=exact"
 
     if os.isatty(sys.stdin.fileno()) and not args.input:
         ap.print_help(file=sys.stderr)
         sys.exit()
 
-    input_url = get_input_url(args)
     try:
-        input_stream = get_stream_from_url(input_url) if input_url else get_stream_from_file(args.input)
+        input_stream = get_input_stream(args)
         maxhosts = None if args.report else args.tophosts
         cdxanalizer = CDXAnalyzer(samplesize=args.samples, maxhosts=maxhosts, outfile=args.out)
         if args.load:
