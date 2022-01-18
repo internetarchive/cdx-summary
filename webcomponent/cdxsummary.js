@@ -137,7 +137,7 @@ class CDXSummary extends HTMLElement {
 `;
   }
 
-  sampleMementosList() {
+  sampleCapturesList() {
     return `
 <ul>
 ${this.data.samples.map(s => `<li><a href="${this.WAYBACK}${s[0]}/${s[1]}">${s[1]}</a></li>`).join('\n')}
@@ -206,7 +206,7 @@ Below is a list of random sample of captured URIs (i.e., Original URIs or URI-Rs
 The sample is chosen only from captures that were observed with the <code>text/html</code> media type and <code>200 OK</code> HTTP status code.
 Any unexpected URIs listed below (e.g., with a <code>.png/.jpg/.pdf</code> file extension) are likely a result of the Soft-404 issue from the origin server.
 </p>
-${this.sampleMementosList()}
+${this.sampleCapturesList()}
 `;
   }
 
