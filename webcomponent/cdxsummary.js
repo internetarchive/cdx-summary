@@ -126,12 +126,13 @@ class CDXSummary extends HTMLElement {
     </tr>`
   }).join('\n')}
   </tbody>
+  ${otherHostsCount > 0 && `
   <tfoot>
     <tr>
       <th scope="row">OTHERS (${this.toNum(otherHostsCount)} Hosts)</th>
       ${this.numCell(otherHostsTotal)}
     </tr>
-  </tfoot>
+  </tfoot>`}
 </table>
 `;
   }
