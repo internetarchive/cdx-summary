@@ -140,7 +140,7 @@ class CDXSummary extends HTMLElement {
   sampleCapturesList() {
     return `
 <ul>
-${this.data.samples.map(s => `<li><a href="${this.WAYBACK}${s[0]}/${s[1]}">${s[1]}</a></li>`).join('\n')}
+${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, ''))).sort((a, b) => a[2].length - b[2].length).map(s => `<li><a href="${this.WAYBACK}${s[0]}/${s[1]}">${s[2]}</a></li>`).join('\n')}
 </ul>
 `;
   }
