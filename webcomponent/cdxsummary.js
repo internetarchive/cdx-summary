@@ -43,7 +43,7 @@ class CDXSummary extends HTMLElement {
       <td>${this.toNum(this.data.captures)}</td>
     </tr>
     <tr>
-      <th scope="row">Consecutive Unique URLs</th>
+      <th scope="row">Consecutive Unique URIs</th>
       <td>${this.toNum(this.data.urls)}</td>
     </tr>
     <tr>
@@ -202,7 +202,7 @@ ${this.topHostsTable()}
 
 <h2><i>${this.data.samples.length}</i> Random Samples of <i>OK HTML</i> Captures</h2>
 <p>
-Below is a list of random sample of captured URIs (i.e., Original URIs or URI-Rs) linked to their corresponding playback URIs (i.e., Memento URIs or URI-Ms) from this item/collection.
+Below is a list of random sample of captured URIs linked to their corresponding playback URIs from this item/collection.
 The sample is chosen only from captures that were observed with the <code>text/html</code> media type and <code>200 OK</code> HTTP status code.
 Any unexpected URIs listed below (e.g., with a <code>.png/.jpg/.pdf</code> file extension) are likely a result of the Soft-404 issue from the origin server.
 </p>
