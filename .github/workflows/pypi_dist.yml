@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-n-publish:
-    name: Build and Publish Package
+    name: Build and Publish PyPI Package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
