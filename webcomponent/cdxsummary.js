@@ -1,4 +1,4 @@
-class CDXSummary extends HTMLElement {
+export class CDXSummary extends HTMLElement {
   PETABOX = 'https://archive.org/download/';
   WAYBACK = 'https://web.archive.org/web/';
   CLIREPO = 'https://github.com/internetarchive/cdx-summary';

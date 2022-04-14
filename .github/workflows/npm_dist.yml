@@ -20,6 +20,6 @@ jobs:
           node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
       - name: Publish package on NPM
-        run: cd webcomponent && npm publish --access public
+        run: cd webcomponent && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PASSWORD }}

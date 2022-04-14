@@ -3,6 +3,10 @@
   "version": "0.1.1",
   "description": "A Web Component to render CDX Summary JSON files",
   "main": "cdxsummary.js",
+  "module": "cdxsummary.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
