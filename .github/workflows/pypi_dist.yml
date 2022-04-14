@@ -2,8 +2,10 @@ name: Publish to PyPI
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - "main"
+    paths:
+      - "cdxsummary/__init__.py"
 
 jobs:
   build-n-publish:
