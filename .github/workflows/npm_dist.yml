@@ -10,7 +10,7 @@ on:
 
 jobs:
   publish:
-    name: Publish Package
+    name: Publish NPM Package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,6 +20,6 @@ jobs:
           node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
       - name: Publish package on NPM
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PASSWORD }}
