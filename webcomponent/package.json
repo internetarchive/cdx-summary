@@ -2,10 +2,7 @@
   "name": "@internetarchive/cdxsummary",
   "version": "0.1.1",
   "description": "A Web Component to render CDX Summary JSON files",
-  "main": "webcomponent/cdxsummary.js",
-  "files": [
-    "webcomponent"
-  ],
+  "main": "cdxsummary.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
