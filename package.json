@@ -1,0 +1,30 @@
+{
+  "name": "@internetarchive/cdxsummary",
+  "version": "0.1.0",
+  "description": "A Web Component to render CDX Summary JSON files",
+  "main": "webcomponent/cdxsummary.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/internetarchive/cdx-summary.git"
+  },
+  "keywords": [
+    "webcomponent",
+    "archive",
+    "web-archive",
+    "collection",
+    "summary",
+    "warc",
+    "cdx",
+    "report",
+    "statistics"
+  ],
+  "author": "Sawood Alam <sawood@archive.org>",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/internetarchive/cdx-summary/issues"
+  },
+  "homepage": "https://github.com/internetarchive/cdx-summary#readme"
+}
