@@ -173,7 +173,7 @@ ${this.overviewTable()}
 <h2>MIME Type and Status Code Distribution</h2>
 <p>
 The grid below shows HTTP status code groups of captures of various media types in this item/collection.
-The <code>Revisit</code> records do not represents an independent media type, instead, they reflect an unchanged state of representations of resources from some of their prior observations (i.e., the same content digest for the same URI).
+The <code>Revisit</code> records do not represent an independent media type, instead, they reflect an unchanged state of representations of resources from some of their prior observations (i.e., the same content digest for the same URI).
 The <code>TOTAL</code> column shows combined counts for each media type irrespective of their HTTP status code and the <code>TOTAL</code> row (displayed only if there are more than one media types listed) shows the combined counts of each HTTP status code group irrespective of their media types.
 </p>
 ${this.gridTable(this.data.mimestatus, 'MIME')}
