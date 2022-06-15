@@ -11,7 +11,7 @@ export class CDXSummary extends HTMLElement {
 
   toFs(s) {
     let i = Math.floor(Math.log(s)/Math.log(1024));
-    return (s/Math.pow(1024, i)).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+    return `${Number((s/Math.pow(1024, i)).toFixed(2))} ${['B', 'kB', 'MB', 'GB', 'TB'][i]}`;
   }
 
   toDate(dt) {
