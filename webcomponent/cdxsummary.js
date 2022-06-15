@@ -18,6 +18,10 @@ export class CDXSummary extends HTMLElement {
     return `${dt.substring(0, 4)}-${dt.substring(4, 6)}-${dt.substring(6, 8)}`;
   }
 
+  toMonth(m) {
+    return (new Date(1970, m-1, 15)).toLocaleDateString('default', {month: 'short'});
+  }
+
   toNum(n) {
     return new Intl.NumberFormat().format(n);
   }
@@ -67,8 +71,8 @@ export class CDXSummary extends HTMLElement {
 `;
   }
 
-  gridTable(obj, group='', cols) {
-    if (!cols) {
+  gridTable(obj, group='', cols=[], format=c=>c) {
+    if (!cols.length) {
       cols = Object.keys(Object.values(obj)[0]);
     }
     const colSum = cols.reduce((a, k) => {a[k] = 0; return a}, {});
@@ -77,7 +81,7 @@ export class CDXSummary extends HTMLElement {
   <thead>
     <tr>
       <th scope="col">${group}</th>
-      ${cols.map(c => `<th scope="col">${c}</th>`).join('\n')}
+      ${cols.map(c => `<th scope="col">${format(c)}</th>`).join('\n')}
       <th scope="col">TOTAL</th>
     </tr>
   </thead>
@@ -191,7 +195,7 @@ ${this.gridTable(this.data.pathquery, 'Path')}
 The grid below shows the number of captures of this item/collection observed in different calendar years and months.
 The <code>TOTAL</code> column shows combined counts for corresponding years and the <code>TOTAL</code> row (displayed only if the captures were observed across multiple calendar years) shows the combined number of captures observed in the corresponding calendar months irrespective of their years.
 </p>
-${this.gridTable(this.data.yearmonth, 'Year', Object.keys(Object.values(this.data.yearmonth)[0]).sort())}
+${this.gridTable(this.data.yearmonth, 'Year', Object.keys(Object.values(this.data.yearmonth)[0]).sort(), this.toMonth)}
 
 <h2>Top <i>${this.toNum(Object.keys(this.data.tophosts).length)}</i> Out of <i>${this.toNum(this.data.hosts)}</i> Hosts</h2>
 <p>
