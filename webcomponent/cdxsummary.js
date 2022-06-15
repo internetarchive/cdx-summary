@@ -143,9 +143,12 @@ export class CDXSummary extends HTMLElement {
 
   sampleCapturesList() {
     return `
+<details class="samples">
+<summary data-open="Hide Sample URIs" data-close="Show ${this.data.samples.length} Random Sample URIs"></summary>
 <ul>
 ${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, ''))).sort((a, b) => a[2].length - b[2].length).map(s => `<li><a href="${this.WAYBACK}${s[0]}/${s[1]}">${s[2]}</a></li>`).join('\n')}
 </ul>
+</details>
 `;
   }
 
@@ -205,7 +208,7 @@ The <code>OTHERS</code> row, if present, is the sum of the longtail of hosts.
 </p>
 ${this.topHostsTable()}
 
-<h2><i>${this.data.samples.length}</i> Random Samples of <i>OK HTML</i> Captures</h2>
+<h2>Random HTML Capture Samples</h2>
 <p>
 Below is a list of random sample of captured URIs linked to their corresponding Wayback Machine playback URIs from this item/collection.
 The sample is chosen only from captures that were observed with the <code>text/html</code> media type and <code>200 OK</code> HTTP status code.
@@ -277,6 +280,18 @@ ${this.sampleCapturesList()}
   }
   .info::before {
     content: "🛈 ";
+  }
+  summary {
+    cursor: pointer;
+  }
+  details {
+    margin-bottom: 20px;
+  }
+  details.samples[open] summary::after {
+    content: attr(data-open);
+  }
+  details.samples:not([open]) summary::after {
+    content: attr(data-close);
   }
 </style>
 <div id="container">
