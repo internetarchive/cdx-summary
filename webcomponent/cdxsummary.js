@@ -38,6 +38,10 @@ export class CDXSummary extends HTMLElement {
     return nums.reduce((s, v) => s + v, 0);
   }
 
+  urim(dt, urir, mod='') {
+    return `${this.playback}/${dt}${mod}/${urir}`;
+  }
+
   overviewTable() {
     return `
 <table>
@@ -146,7 +150,7 @@ export class CDXSummary extends HTMLElement {
 <details class="samples">
 <summary data-open="Hide Sample URIs" data-close="Show ${this.data.samples.length} Random Sample URIs"></summary>
 <ul>
-${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, ''))).sort((a, b) => a[2].length - b[2].length).map(s => `<li><a href="${this.playback.replace(/\/+$/, '')}/${s[0]}/${s[1]}">${s[2]}</a></li>`).join('\n')}
+${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, ''))).sort((a, b) => a[2].length - b[2].length).map(s => `<li><a href="${this.urim(s[0], s[1])}">${s[2]}</a></li>`).join('\n')}
 </ul>
 </details>
 `;
@@ -228,7 +232,7 @@ ${this.sampleCapturesList()}
   }
 
   async connectedCallback() {
-    this.playback = this.getAttribute('playback') || this.WAYBACK;
+    this.playback = (this.getAttribute('playback') || this.WAYBACK).replace(/\/+$/, '');
     this.src = this.getAttribute('src') || '';
     this.item = this.getAttribute('item') || '';
     if(this.item && !this.src) {
