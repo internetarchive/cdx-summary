@@ -186,6 +186,7 @@ ${this.gridTable(this.data.mimestatus, 'MIME')}
 <p>
 The grid below shows the number of path segments and the number of query parameters of various URIs in this item/collection.
 For example, the cell <code>P0</code> and <code>Q0</code> shows the number of captures of homepages of various hosts with zero path segments and zero query parameters.
+The URI <code>https://example.com/img/logo.png?width=300&height=100&screen=highres</code> has two path segments (i.e., <code>/img/logo.png</code>) and three query parameters (i.e., <code>width=300&height=100&screen=highres</code>), hence counted under the <code>P2</code> and <code>Q3</code> cell.
 The <code>TOTAL</code> column shows combined counts for URIs with a specific number of path segments irrespective of their number of query parameters and the <code>TOTAL</code> row (displayed only if there are URIs with a varying number of path segments) shows the combined counts for URIs with a specific number of query parameters irrespective of their number of path segments.
 </p>
 ${this.gridTable(this.data.pathquery, 'Path')}
