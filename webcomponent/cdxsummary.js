@@ -156,6 +156,26 @@ ${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, '
 `;
   }
 
+  sampleCards() {
+    let s = this.data.samples;
+    const ridx = new Set();
+    while (ridx.size < Math.min(this.thumbs, s.length)) {
+      ridx.add(Math.floor(Math.random()*s.length));
+    }
+    return `
+<div class="sample-thumbs">
+${[...ridx].map(i => `
+  <div class="thumb-container">
+    <div class="thumb">
+      <a href="${this.urim(s[i][0], s[i][1])}">${s[i][1]}</a>
+      <iframe src="${this.urim(s[i][0], s[i][1], 'if_')}" scrolling="no" frameborder="0" onload="this.style.backgroundColor = 'white'"></iframe>
+    </div>
+  </div>
+`).join('\n')}
+</div>
+`;
+  }
+
   renderSummary() {
     const container = this.shadow.getElementById('container');
     if (this.data['msg']) {
@@ -213,6 +233,7 @@ The <code>OTHERS</code> row, if present, is the sum of the longtail of hosts.
 ${this.topHostsTable()}
 
 <h2>Random HTML Capture Samples</h2>
+${this.sampleCards()}
 <p>
 Below is a list of random sample of captured URIs linked to their corresponding Wayback Machine playback URIs from this item/collection.
 The sample is chosen only from captures that were observed with the <code>text/html</code> media type and <code>200 OK</code> HTTP status code.
@@ -233,6 +254,7 @@ ${this.sampleCapturesList()}
 
   async connectedCallback() {
     this.playback = (this.getAttribute('playback') || this.WAYBACK).replace(/\/+$/, '');
+    this.thumbs = ((parseInt(this.getAttribute('thumbs'))+1) || 5)-1;
     this.src = this.getAttribute('src') || '';
     this.item = this.getAttribute('item') || '';
     if(this.item && !this.src) {
@@ -297,6 +319,43 @@ ${this.sampleCapturesList()}
   }
   details.samples:not([open]) summary::after {
     content: attr(data-close);
+  }
+  .thumb-container {
+    width: 294px;
+    height: 186px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+  }
+  .thumb {
+    width: 288px;
+    height: 180px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 2px;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 58 58' style='enable-background:new 0 0 58 58' xml:space='preserve'%3E%3Cpath fill='lightgray' d='M31 56h24V32H31v24zm2-22h9v12.586l-4.293-4.293-1.414 1.414L43 50.414l6.707-6.707-1.414-1.414L44 46.586V34h9v20H33V34zM21.569 13.569C21.569 10.498 19.071 8 16 8s-5.569 2.498-5.569 5.569c0 3.07 2.498 5.568 5.569 5.568s5.569-2.497 5.569-5.568zm-9.138 0C12.431 11.602 14.032 10 16 10s3.569 1.602 3.569 3.569-1.601 3.569-3.569 3.569-3.569-1.601-3.569-3.569zM6.25 36.661a.997.997 0 0 0 1.41.09l16.313-14.362 7.319 7.318a.999.999 0 1 0 1.414-1.414l-1.825-1.824 9.181-10.054 11.261 10.323a1 1 0 0 0 1.351-1.475l-12-11a1.002 1.002 0 0 0-1.414.063l-9.794 10.727-4.743-4.743a1.003 1.003 0 0 0-1.368-.044L6.339 35.249a1 1 0 0 0-.089 1.412z'/%3E%3Cpath fill='lightgray' d='M57 2H1a1 1 0 0 0-1 1v44a1 1 0 0 0 1 1h24a1 1 0 1 0 0-2H2V4h54v25a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30%;
+  }
+  .thumb a {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    color: #fff;
+    background: #fff;
+    opacity: 0;
+  }
+  .thumb iframe {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 960px;
+    height: 600px;
+    transform-origin: 0 0;
+    transform: scale(0.3, 0.3);
   }
 </style>
 <div id="container">
