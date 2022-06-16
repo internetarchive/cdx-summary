@@ -262,7 +262,7 @@ ${this.sampleCapturesList()}
     this.thumbs = ((parseInt(this.getAttribute('thumbs'))+1) || 5)-1;
     this.format = this.getAttribute('format') || 'local';
     this.formatter = (this.format == 'short') ? this.toSn : (this.format == 'percent') ? this.toPerc : this.toNum
-    this.drawer = this.getAttribute('samples-drawer') || '';
+    this.drawer = this.getAttribute('drawer') || '';
     this.type = this.getAttribute('type') || 'CDX';
     this.name = this.getAttribute('name') || '';
     this.report = this.getAttribute('report') || '';
