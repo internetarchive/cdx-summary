@@ -185,7 +185,7 @@ ${[...ridx].map(i => `
 
     container.innerHTML = `
 <p>
-The summary of the <i>${this.title}</i> ${this.type} below is based on the <a href="${this.src}">summary JSON file</a>.
+The summary of the <i>${this.name}</i> ${this.type} below is based on the <a href="${this.src}">summary JSON file</a>.
 ${this.report ? `A more comprehensive <a href="${this.report}">report JSON file</a> is available for detailed analysis and research.` : ''}
 </p>
 
@@ -257,7 +257,7 @@ ${this.sampleCapturesList()}
     this.thumbs = ((parseInt(this.getAttribute('thumbs'))+1) || 5)-1;
     this.drawer = this.getAttribute('samples-drawer') || '';
     this.type = this.getAttribute('type') || 'CDX';
-    this.title = this.getAttribute('title') || '';
+    this.name = this.getAttribute('name') || '';
     this.report = this.getAttribute('report') || '';
     this.src = this.getAttribute('src') || '';
     this.item = this.getAttribute('item') || '';
@@ -267,8 +267,8 @@ ${this.sampleCapturesList()}
     if(this.item && !this.report) {
       this.report = `${this.PETABOX}${this.item}/${this.item}.report.json.gz`;
     }
-    if(!this.title) {
-      this.title = this.src.split('/').pop().replace(/(.summary)?.json$/, '');
+    if(!this.name) {
+      this.name = this.src.split('/').pop().replace(/(.summary)?.json$/, '');
     }
     this.data['msg'] = this.src ? 'Loading summary...' : 'Either "src" or "item" attribute is required for the &lt;cdx-summary&gt; element!';
 
