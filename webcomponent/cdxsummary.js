@@ -168,7 +168,7 @@ ${[...ridx].map(i => `
   <div class="thumb-container">
     <div class="thumb">
       <a href="${this.urim(s[i][0], s[i][1])}">${s[i][1]}</a>
-      <iframe src="${this.urim(s[i][0], s[i][1], 'if_')}" sandbox="allow-same-origin allow-scripts" scrolling="no" frameborder="0" onload="this.style.backgroundColor = 'white'"></iframe>
+      <iframe src="${this.urim(s[i][0], s[i][1], 'if_')}" sandbox="allow-same-origin allow-scripts" scrolling="no" frameborder="0" onload="this.style.backgroundColor='white'"></iframe>
     </div>
   </div>
 `).join('\n')}
@@ -268,7 +268,7 @@ ${this.sampleCapturesList()}
     padding: 5px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   }
-  table { 
+  table {
     border-collapse: collapse;
   }
   tr:nth-child(even), li:nth-child(even) {
