@@ -10,8 +10,13 @@ export class CDXSummary extends HTMLElement {
   }
 
   toFs(s) {
-    let i = Math.floor(Math.log(s)/Math.log(1024));
-    return `${Number((s/Math.pow(1024, i)).toFixed(2))} ${['B', 'kB', 'MB', 'GB', 'TB'][i]}`;
+    let i = Math.log(s)/Math.log(1024) | 0;
+    return `${Number((s/Math.pow(1024, i)).toFixed(2))} ${['B', 'KB', 'MB', 'GB', 'TB'][i]}`;
+  }
+
+  toSn(n) {
+    let i = Math.log10(n)/3 | 0;
+    return `${Number((n/Math.pow(1000, i)).toFixed(1))}${['', 'K', 'M', 'B', 'T'][i]}`;
   }
 
   toDate(dt) {
@@ -31,7 +36,7 @@ export class CDXSummary extends HTMLElement {
   }
 
   numCell(n) {
-    return `<td title="${this.toPerc(n)}">${this.toNum(n)}</td>`;
+    return `<td title="${this.toSn(n)}\n${this.toPerc(n)}">${this.toNum(n)}</td>`;
   }
 
   numSum(nums) {
