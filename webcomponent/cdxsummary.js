@@ -195,7 +195,7 @@ ${this.report ? `A more comprehensive <a href="${this.report}">report JSON file<
 </p>
 
 <p class="info">
-Hover over on numeric cells to see the percentage value in the tooltip w.r.t. the total number of captures.
+Hover over on numeric cells to see the values in various formats in the tooltip (percentage values are w.r.t. the total number of captures).
 Insignificant values might be reported as <code>0.00%</code>.
 </p>
 
