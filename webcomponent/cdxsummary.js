@@ -201,26 +201,26 @@ The <code>Total WARC Records Size</code> value is neither the combined size of t
 </p>
 ${this.overviewTable()}
 
-<h2>MIME Type and Status Code Distribution</h2>
+<h2>MIME Type and Status Code</h2>
 <p>
-The grid below shows HTTP status code groups of captures of various media types in this item/collection.
+The matrix below shows HTTP status code groups of captures of various media types in this item/collection.
 The <code>Revisit</code> records do not represent an independent media type, instead, they reflect an unchanged state of representations of resources from some of their prior observations (i.e., the same content digest for the same URI).
 The <code>TOTAL</code> column shows combined counts for each media type irrespective of their HTTP status code and the <code>TOTAL</code> row (displayed only if there are more than one media types listed) shows the combined counts of each HTTP status code group irrespective of their media types.
 </p>
 ${this.gridTable(this.data.mimestatus, 'MIME')}
 
-<h2>Path and Query Segments</h2>
+<h2>Path Segment and Query Parameter</h2>
 <p>
-The grid below shows the number of path segments and the number of query parameters of various URIs in this item/collection.
+The matrix below shows the number of path segments and the number of query parameters of various URIs in this item/collection.
 For example, the cell <code>P0</code> and <code>Q0</code> shows the number of captures of homepages of various hosts with zero path segments and zero query parameters.
 The URI <code>https://example.com/img/logo.png?width=300&height=100&screen=highres</code> has two path segments (i.e., <code>/img/logo.png</code>) and three query parameters (i.e., <code>width=300&height=100&screen=highres</code>), hence counted under the <code>P2</code> and <code>Q3</code> cell.
 The <code>TOTAL</code> column shows combined counts for URIs with a specific number of path segments irrespective of their number of query parameters and the <code>TOTAL</code> row (displayed only if there are URIs with a varying number of path segments) shows the combined counts for URIs with a specific number of query parameters irrespective of their number of path segments.
 </p>
 ${this.gridTable(this.data.pathquery, 'Path')}
 
-<h2>Year and Month Distribution</h2>
+<h2>Year and Month</h2>
 <p>
-The grid below shows the number of captures of this item/collection observed in different calendar years and months.
+The matrix below shows the number of captures of this item/collection observed in different calendar years and months.
 The <code>TOTAL</code> column shows combined counts for corresponding years and the <code>TOTAL</code> row (displayed only if the captures were observed across multiple calendar years) shows the combined number of captures observed in the corresponding calendar months irrespective of their years.
 </p>
 ${this.gridTable(this.data.yearmonth, 'Year', Object.keys(Object.values(this.data.yearmonth)[0]).sort(), this.toMonth)}
