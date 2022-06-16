@@ -147,7 +147,7 @@ export class CDXSummary extends HTMLElement {
 
   sampleCapturesList() {
     return `
-<details class="samples">
+<details ${this.drawer} class="samples">
 <summary data-open="Hide Sample URIs" data-close="Show ${this.data.samples.length} Random Sample URIs"></summary>
 <ul>
 ${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, ''))).sort((a, b) => a[2].length - b[2].length).map(s => `<li><a href="${this.urim(s[0], s[1])}">${s[2]}</a></li>`).join('\n')}
@@ -255,6 +255,7 @@ ${this.sampleCapturesList()}
   async connectedCallback() {
     this.playback = (this.getAttribute('playback') || this.WAYBACK).replace(/\/+$/, '');
     this.thumbs = ((parseInt(this.getAttribute('thumbs'))+1) || 5)-1;
+    this.drawer = this.getAttribute('samples-drawer') || '';
     this.src = this.getAttribute('src') || '';
     this.item = this.getAttribute('item') || '';
     if(this.item && !this.src) {
