@@ -20,6 +20,7 @@ The list of random sample capture playback URIs are hidden by default, but can b
 The element accepts a `name` attribute, which defaults to the name of the summary file (without extensions).
 A `type` attribute can be used to customize textual descriptions with a value of `collection`, `item`, or `CDX` (defaults to `CDX`).
 A `report` attribute points to a comprehensive version of the summary file, which is derived from the `item` attribute for Petabox items/collections, unless specified explicitly.
+Number reported in various table cells can be formatted using `format` attribute with values `short`, `percent`, or `local` (defaults to `local`).
 The code below illustrates the usage of these attributes.
 
 ```html
@@ -27,6 +28,7 @@ The code below illustrates the usage of these attributes.
              report="https://example.org/files/covid-collection-cdx.report.json.gz"
              type="collection"
              name="COVID-19 Collection"
+             format="short"
              thumbs="10"
              playback="https://archive.example.com/memento/"
              samples-drawer="open">

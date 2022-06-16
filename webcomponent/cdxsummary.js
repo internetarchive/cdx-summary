@@ -35,8 +35,8 @@ export class CDXSummary extends HTMLElement {
     return `${(n*100/this.data.captures).toFixed(2)}%`;
   }
 
-  numCell(n) {
-    return `<td title="${this.toSn(n)}\n${this.toPerc(n)}">${this.toNum(n)}</td>`;
+  numCell(n, h='') {
+    return `<td title="${[h, this.toPerc(n), this.toSn(n), this.toNum(n)].filter(i => i).join('\n')}">${this.formatter(n)}</td>`;
   }
 
   numSum(nums) {
@@ -101,9 +101,9 @@ export class CDXSummary extends HTMLElement {
       <th scope="row">${o[0]}</th>
       ${cols.map(c => {
         colSum[c] += o[1][c];
-        return this.numCell(o[1][c]);
+        return this.numCell(o[1][c], `${o[0]} - ${format(c)}`);
       }).join('\n')}
-      ${this.numCell(this.numSum(Object.values(o[1])))}
+      ${this.numCell(this.numSum(Object.values(o[1])), o[0])}
     </tr>`
   }).join('\n')}
   </tbody>
@@ -111,8 +111,8 @@ export class CDXSummary extends HTMLElement {
   <tfoot>
     <tr>
       <th scope="col">TOTAL</th>
-      ${cols.map(c => this.numCell(colSum[c])).join('\n')}
-      ${this.numCell(this.data.captures)}
+      ${cols.map(c => this.numCell(colSum[c], format(c))).join('\n')}
+      ${this.numCell(this.data.captures, 'ALL')}
     </tr>
   </tfoot>`}
 </table>
@@ -135,7 +135,7 @@ export class CDXSummary extends HTMLElement {
     return `
     <tr>
       <th scope="row">${h[0]}</th>
-      ${this.numCell(h[1])}
+      ${this.numCell(h[1], h[0])}
     </tr>`
   }).join('\n')}
   </tbody>
@@ -143,7 +143,7 @@ export class CDXSummary extends HTMLElement {
   <tfoot>
     <tr>
       <th scope="row">OTHERS (${this.toNum(otherHostsCount)} Hosts)</th>
-      ${this.numCell(otherHostsTotal)}
+      ${this.numCell(otherHostsTotal, 'OTHERS')}
     </tr>
   </tfoot>`}
 </table>
@@ -260,6 +260,8 @@ ${this.sampleCapturesList()}
   async connectedCallback() {
     this.playback = (this.getAttribute('playback') || this.WAYBACK).replace(/\/+$/, '');
     this.thumbs = ((parseInt(this.getAttribute('thumbs'))+1) || 5)-1;
+    this.format = this.getAttribute('format') || 'local';
+    this.formatter = (this.format == 'short') ? this.toSn : (this.format == 'percent') ? this.toPerc : this.toNum
     this.drawer = this.getAttribute('samples-drawer') || '';
     this.type = this.getAttribute('type') || 'CDX';
     this.name = this.getAttribute('name') || '';
