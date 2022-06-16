@@ -156,7 +156,7 @@ ${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, '
 `;
   }
 
-  sampleCards() {
+  sampleThumbs() {
     let s = this.data.samples;
     const ridx = new Set();
     while (ridx.size < Math.min(this.thumbs, s.length)) {
@@ -233,7 +233,7 @@ The <code>OTHERS</code> row, if present, is the sum of the longtail of hosts.
 ${this.topHostsTable()}
 
 <h2>Random HTML Capture Samples</h2>
-${this.sampleCards()}
+${this.sampleThumbs()}
 <p>
 Below is a list of random sample of captured URIs linked to their corresponding Wayback Machine playback URIs from this item/collection.
 The sample is chosen only from captures that were observed with the <code>text/html</code> media type and <code>200 OK</code> HTTP status code.
