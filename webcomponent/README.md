@@ -11,3 +11,14 @@ Alternatively, render a summary from a `web` collection/item of Internet Archive
 ```html
 <cdx-summary item="PETABOX_ITEM_OR_COLLECTION_ID"></cdx-summary>
 ```
+
+By default, sample capture playback links (i.e., memento URIs or URI-Ms) point to `https://web.archive.org/web/`, but this can be customized by specifying the `playback` attribute.
+To control the maximum number of thumbnails of random sample captures (rendered by embedding them in iframes), specify a positive integer in the `thumbs` attribute.
+The code below illustrates the usage of these attributes.
+
+```html
+<cdx-summary src="https://example.org/files/covid-collection-cdx.summary.json"
+             thumbs="10"
+             playback="https://archive.example.com/memento/">
+</cdx-summary>
+```
