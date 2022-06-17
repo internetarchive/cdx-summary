@@ -34,3 +34,5 @@ The code below illustrates the usage of these attributes.
              drawer="open">
 </cdx-summary>
 ```
+
+An [interactive test interface](https://internetarchive.github.io/cdx-summary/webcomponent/) is available for the Web Component that renders the JSON summary.
