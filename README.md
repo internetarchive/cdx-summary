@@ -389,3 +389,7 @@ $ cdxsummary --json sample.cdx.gz
 }
 ```
 </details>
+
+## Testing
+
+An [interactive test interface](https://internetarchive.github.io/cdx-summary/webcomponent/) is available for the Web Component that renders the JSON summary.
