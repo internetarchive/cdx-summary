@@ -287,6 +287,11 @@ ${this.sampleCapturesList()}
   }
   table {
     border-collapse: collapse;
+    display: block;
+    max-width: fit-content;
+    margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
   }
   tr:nth-child(even), li:nth-child(even) {
     background-color: #eee;
@@ -336,6 +341,9 @@ ${this.sampleCapturesList()}
   }
   details.samples:not([open]) summary::after {
     content: attr(data-close);
+  }
+  .sample-thumbs {
+    text-align: center;
   }
   .thumb-container {
     width: 294px;
