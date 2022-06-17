@@ -69,7 +69,7 @@ optional arguments:
 
 ## Sample Output
 
-Plain text summary (with colors, when supported by the terminal):
+### Plain Text Summary
 
 <details>
   <summary>$ cdxsummary sample.cdx.gz</summary>
@@ -159,7 +159,7 @@ Plain text summary (with colors, when supported by the terminal):
 ```
 </details>
 
-JSON summary:
+### JSON Summary
 
 <details>
   <summary>$ cdxsummary --json sample.cdx.gz</summary>
