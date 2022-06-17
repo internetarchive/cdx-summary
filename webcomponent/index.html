@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CDX Summary Tester</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    h1 {
+      background: #111;
+      color: #eee;
+      padding: 10px;
+      margin: 0 auto;
+      text-align: center;
+      font-family: sans-serif;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    #form-container {
+      background: #ccc;
+      padding: 5px;
+      font-family: mono;
+    }
+    #code-container {
+      background: #111;
+      color: #eee;
+      margin: 0;
+      padding: 5px 10px;
+      text-align: center;
+      overflow: auto;
+    }
+    .wide-input {
+      width: 300px;
+    }
+    .narrow-input {
+      width: 150px;
+    }
+    .submit {
+      float: right;
+      margin-top: -5px;
+    }
+  </style>
+  <script type="module" src="cdxsummary.js"></script>
+  <script>
+    const lists = {
+      "attr": ["src", "item", "name", "report", "playback", "type", "format", "thumbs", "drawer"],
+      "src": ["samples/MC.summary.json", "samples/EoT20.summary.json"],
+      "item": ["mediacloud", "EndOfTerm2020WebCrawls", "epa-via-sitemap"],
+      "type": ["CDX", "collection", "item"],
+      "format": ["short", "percent", "local"]
+    };
+    const l = Math.max(...(lists["attr"].map(el => el.length)));
+    const q = new URLSearchParams(location.search);
+    const g = a => q.get(a) || '';
+    const f = a => `<br>&nbsp;&nbsp;&nbsp;&nbsp;${a}${'&nbsp;'.repeat(l+1-a.length)}=&nbsp;&quot;`;
+    const d = a => `<datalist id="${a}-list">${lists[a].map(i => `<option value="${i}">`).join('')}</datalist>`;
+    const elm = `<cdx-summary ${lists["attr"].filter(a => q.has(a)).map(i => `${i}="${g(i)}"`).join(' ')}></cdx-summary>`;
+    const visf = `
+    <form id="cdxsummary">
+      &lt;cdx-summary
+      ${f('src')}<input name="src" value="${g('src')}" placeholder="Summary file URL (Optional if item is provided)" list="src-list" class="wide-input">&quot;
+      ${d('src')}
+      ${f('item')}<input name="item" value="${g('item')}" placeholder="Collection/Item ID (Optional if src is provided)" list="item-list" class="wide-input">&quot;
+      ${d('item')}
+      ${f('name')}<input name="name" value="${g('name')}" placeholder="Default: Derived from filename" class="wide-input">&quot;
+      ${f('report')}<input name="report" value="${g('report')}" placeholder="Default: Derived from item" class="wide-input">&quot;
+      ${f('playback')}<input name="playback" value="${g('playback')}" placeholder="Default: https://web.archive.org/web/" class="wide-input">&quot;
+      ${f('type')}<input name="type" value="${g('type')}" placeholder="Default: CDX" list="type-list" class="narrow-input">&quot;
+      ${d('type')}
+      ${f('format')}<input name="format" value="${g('format')}" placeholder="Default: local" list="format-list" class="narrow-input">&quot;
+      ${d('format')}
+      ${f('thumbs')}<input name="thumbs" value="${g('thumbs')}" type="number" min="0" placeholder="Thumbnail count" class="narrow-input">&quot;
+      ${f('drawer')}<input name="drawer" value="open" type="checkbox" id="drawer"${g('drawer')=='open' ? ' checked' : ''}>
+      <label for="drawer">open</label>&quot;
+      <br>
+      &gt;&lt;/cdx-summary&gt;
+      <input type="submit" value="Render" class="submit">
+    </form>`;
+
+    document.addEventListener('formdata', e => Array.from(e.formData).filter(([k, v]) => v == '').map(([k, v]) => e.formData.delete(k)));
+    window.onload = () => {
+      document.getElementById('form-container').innerHTML = visf;
+      document.getElementById('code-out').innerText = elm;
+      document.getElementById('summary-container').innerHTML = elm;
+    };
+  </script>
+</head>
+<body>
+  <h1>CDX Summary Tester</h1>
+  <div id="form-container"></div>
+  <pre id="code-container"><code id="code-out"></code></pre>
+  <div id="summary-container"></div>
+</body>
+</html>

@@ -69,9 +69,12 @@ optional arguments:
 
 ## Sample Output
 
-```
-$ cdxsummary sample.cdx.gz
+### Plain Text Summary
 
+<details>
+  <summary>$ cdxsummary sample.cdx.gz</summary>
+
+```
              CDX Overview             
  ──────────────────────────────────── 
  Total Captures in CDX         74,460 
@@ -154,6 +157,12 @@ $ cdxsummary sample.cdx.gz
  * https://web.archive.org/web/20210318000510/https://roundme.com/embed/ro6VYzBNE5vePdZ3xyph
  * https://web.archive.org/web/20210318000510/https://prevention.cancer.gov/news-and-events/videos-and-webinars
 ```
+</details>
+
+### JSON Summary
+
+<details>
+  <summary>$ cdxsummary --json sample.cdx.gz</summary>
 
 ```
 $ cdxsummary --json sample.cdx.gz
@@ -379,3 +388,8 @@ $ cdxsummary --json sample.cdx.gz
   ]
 }
 ```
+</details>
+
+## Testing
+
+An [interactive test interface](https://internetarchive.github.io/cdx-summary/webcomponent/) is available for the Web Component that renders the JSON summary.

@@ -1,0 +1,661 @@
+{
+  "captures": 3221758919,
+  "urls": 2381208479,
+  "hosts": 5366007,
+  "bytes": 172013736891324,
+  "first": "20160609215144",
+  "last": "20220202144009",
+  "tophosts": {
+    "wp.me": 11457705,
+    "upload.wikimedia.org": 10667921,
+    "designtaxi.com": 10639524,
+    "indiewire.com": 10341593,
+    "public-api.wordpress.com": 9176593,
+    "youtube.com": 7301589,
+    "facebook.com": 6414589,
+    "elfagr.com": 6122678,
+    "secure.gravatar.com": 6095165,
+    "googletagmanager.com": 5627624,
+    "sn.dk": 5316419,
+    "robesonian.com": 4972124,
+    "haberler.com": 4911462,
+    "youm7.com": 4735164,
+    "bn.wikipedia.org": 4500460,
+    "pbs.twimg.com": 4494328,
+    "r-login.wordpress.com": 4398652,
+    "usatoday.com": 4383796,
+    "bhaskar.com": 4299731,
+    "id.wikipedia.org": 4231815
+  },
+  "mimestatus": {
+    "HTML": {
+      "2XX": 965411367,
+      "3XX": 276575748,
+      "4XX": 125142922,
+      "5XX": 10774370,
+      "Other": 254055
+    },
+    "Image": {
+      "2XX": 595129981,
+      "3XX": 1848252,
+      "4XX": 1176862,
+      "5XX": 110163,
+      "Other": 6
+    },
+    "CSS": {
+      "2XX": 34916375,
+      "3XX": 7815,
+      "4XX": 35193,
+      "5XX": 658,
+      "Other": 0
+    },
+    "JavaScript": {
+      "2XX": 54437714,
+      "3XX": 14160,
+      "4XX": 139220,
+      "5XX": 1478,
+      "Other": 3
+    },
+    "JSON": {
+      "2XX": 72073766,
+      "3XX": 378508,
+      "4XX": 6435865,
+      "5XX": 182669,
+      "Other": 0
+    },
+    "XML": {
+      "2XX": 123611319,
+      "3XX": 474681,
+      "4XX": 8382386,
+      "5XX": 265499,
+      "Other": 0
+    },
+    "Text": {
+      "2XX": 9717016,
+      "3XX": 4989191,
+      "4XX": 5825931,
+      "5XX": 89757,
+      "Other": 7
+    },
+    "PDF": {
+      "2XX": 907503,
+      "3XX": 1743,
+      "4XX": 297,
+      "5XX": 12,
+      "Other": 0
+    },
+    "Font": {
+      "2XX": 1348879,
+      "3XX": 208,
+      "4XX": 5827,
+      "5XX": 21,
+      "Other": 0
+    },
+    "Audio": {
+      "2XX": 1655064,
+      "3XX": 7847,
+      "4XX": 4701,
+      "5XX": 9,
+      "Other": 0
+    },
+    "Video": {
+      "2XX": 2081368,
+      "3XX": 14928,
+      "4XX": 20936,
+      "5XX": 5,
+      "Other": 0
+    },
+    "Revisit": {
+      "2XX": 0,
+      "3XX": 0,
+      "4XX": 0,
+      "5XX": 0,
+      "Other": 790098238
+    },
+    "Other": {
+      "2XX": 34327496,
+      "3XX": 87943703,
+      "4XX": 4302731,
+      "5XX": 629212,
+      "Other": 5254
+    }
+  },
+  "pathquery": {
+    "P0": {
+      "Q0": 10137110,
+      "Q1": 75096506,
+      "Q2": 5222175,
+      "Q3": 1422227,
+      "Q4": 736628,
+      "Other": 2345905
+    },
+    "P1": {
+      "Q0": 322542556,
+      "Q1": 43841147,
+      "Q2": 27014507,
+      "Q3": 29103774,
+      "Q4": 7100402,
+      "Other": 41134623
+    },
+    "P2": {
+      "Q0": 370206924,
+      "Q1": 55247724,
+      "Q2": 28783611,
+      "Q3": 31029789,
+      "Q4": 9766427,
+      "Other": 26319078
+    },
+    "P3": {
+      "Q0": 367658614,
+      "Q1": 61591011,
+      "Q2": 17508660,
+      "Q3": 15919708,
+      "Q4": 5806691,
+      "Other": 13254728
+    },
+    "P4": {
+      "Q0": 310543626,
+      "Q1": 140279203,
+      "Q2": 80114245,
+      "Q3": 7705491,
+      "Q4": 2250744,
+      "Other": 6257513
+    },
+    "Other": {
+      "Q0": 881020001,
+      "Q1": 157916352,
+      "Q2": 26846263,
+      "Q3": 18521368,
+      "Q4": 6848796,
+      "Other": 14664792
+    }
+  },
+  "yearmonth": {
+    "2016": {
+      "01": 0,
+      "02": 0,
+      "03": 0,
+      "04": 0,
+      "05": 0,
+      "06": 710753,
+      "07": 0,
+      "08": 0,
+      "09": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0
+    },
+    "2018": {
+      "01": 0,
+      "02": 0,
+      "03": 0,
+      "04": 0,
+      "05": 18409894,
+      "06": 20138119,
+      "07": 63997290,
+      "08": 82864370,
+      "09": 101464239,
+      "10": 52569004,
+      "11": 170693250,
+      "12": 112690671
+    },
+    "2019": {
+      "01": 19598526,
+      "02": 162402131,
+      "03": 65102242,
+      "04": 88210019,
+      "05": 10937609,
+      "06": 79065196,
+      "07": 83674051,
+      "08": 33172213,
+      "09": 78516813,
+      "10": 87399023,
+      "11": 73646742,
+      "12": 84030203
+    },
+    "2020": {
+      "01": 80033841,
+      "02": 76467578,
+      "03": 84829936,
+      "04": 176568383,
+      "05": 195626716,
+      "06": 227839303,
+      "07": 55837610,
+      "08": 48706314,
+      "09": 44075057,
+      "10": 43451655,
+      "11": 62242880,
+      "12": 58438537
+    },
+    "2021": {
+      "01": 56130245,
+      "02": 38882332,
+      "03": 55665115,
+      "04": 45999374,
+      "05": 45209593,
+      "06": 43396066,
+      "07": 46897574,
+      "08": 45611165,
+      "09": 20527175,
+      "10": 45615260,
+      "11": 42424841,
+      "12": 50262197
+    },
+    "2022": {
+      "01": 40104802,
+      "02": 1623012,
+      "03": 0,
+      "04": 0,
+      "05": 0,
+      "06": 0,
+      "07": 0,
+      "08": 0,
+      "09": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0
+    }
+  },
+  "samples": [
+    [
+      "20200527210816",
+      "https://mansion-san-miguel-san-miguel-de-allende.booked.se//amp.html"
+    ],
+    [
+      "20190330160914",
+      "http://nna-leb.gov.lb/fr/show-news/101744/nna-leb.gov.lb/nna-leb.gov.lb"
+    ],
+    [
+      "20190608121808",
+      "https://finance.yahoo.com/news/mad-crypto-look-behind-coinbase-140701811.html"
+    ],
+    [
+      "20200429135903",
+      "https://mcuoneclipse.com/2017/07/09/karwendel/"
+    ],
+    [
+      "20190706201030",
+      "https://www.elheraldo.hn/pais/1299190-466/anuncian-fumigaciones-nocturnas-para-frenar-zancudo-aedes-aegypti-en-honduras"
+    ],
+    [
+      "20200822195952",
+      "https://informer.rs/tv-in/vesti/530165/doktorka-darija-otkrila-nosenje-maske-smanjuje-verovatnocu-zaraze-ispod-jedan-odsto"
+    ],
+    [
+      "20191022061138",
+      "https://www.patrika.com/banswara-news/children-of-gutka-tobacco-eating-women-become-malnourished-5203171/"
+    ],
+    [
+      "20200326162803",
+      "https://www.haaretz.com/food/.premium.MAGAZINE-yes-you-can-and-should-appreciate-canned-food-1.8710319"
+    ],
+    [
+      "20200529190909",
+      "http://www.viralnewslatest.com/2020/01/"
+    ],
+    [
+      "20190331133315",
+      "https://www.ilcittadinodirecanati.it/notizie-recanati/46430-cinquanta-giorni-per-abbattere-la-ex-gigli-e-smaltire-macerie"
+    ],
+    [
+      "20200117223439",
+      "https://www.usatoday.com/story/sports/nfl/2015/03/12/jury-nfl-breached-super-bowl-tickets-contract-but-no-fraud/70230932/"
+    ],
+    [
+      "20191204161510",
+      "https://www.googletagmanager.com/ns.html?id=GTM-PNPR354&tncms.template.version=3.152.0&tncms.page.grid=defender&tncms.page.style=default&tncms.page.path=%2Fnews&tncms.page.syndicated=false&tncms.page.reaction=false&tncms.page.app=editorial&tncms.page.theme=flex&tncms.page.skin=flex-editorial&tncms.page.http_status=200&tncms.subscription.required=false&tncms.asset.author=FOX+12+Staff&tncms.vendor.outbrain=Headlines+and+photo+grid&tncms.vendor.taboola=&tncms.vendor.chartbeat=19747&tncms.vendor.comscore=6036305&tncms.system.render_time=235&tncms.client.is_bot=yes&tncms.client.is_gdpr=no&tncms.client.noscript=yes"
+    ],
+    [
+      "20210609022051",
+      "https://www.towleroad.com/2020/09/canadas-drag-race-queen/"
+    ],
+    [
+      "20200208194619",
+      "https://www.dailynews.com/2020/02/07/councilman-explores-safe-parking-site-in-former-sherman-oaks-homeless-encampment/amp/"
+    ],
+    [
+      "20181201144814",
+      "https://amp.24h.com.vn/doi-song-showbiz/con-trai-chuc-mung-sinh-nhat-bo-dan-truong-qua-tuoi-42-cuc-dang-yeu-c729a1009561.html"
+    ],
+    [
+      "20191023154117",
+      "https://www.usnews.com/news/world/articles/2019-10-22/malaysian-prosecutor-najib-orchestrated-graft-like-an-emperor"
+    ],
+    [
+      "20200223201637",
+      "https://www.winghamchronicle.com.au/story/6641097/helpers-are-key/?src=rss"
+    ],
+    [
+      "20200811141734",
+      "https://www.texemarrs.com/062017/putin_defends_christian_civilization.htm"
+    ],
+    [
+      "20210604085006",
+      "http://internationalfilmstudies.blogspot.com/2018/06/hannah-arendt-germanyluxemborgfrance.html"
+    ],
+    [
+      "20190713153207",
+      "https://www.elsoldeleon.com.mx/policiaca/presuntos-ladrones-abandonan-botin-en-bulevar-vicente-valtierra-3891706.html"
+    ],
+    [
+      "20210716072315",
+      "https://www.emirates.com/us/english/destinations/flights-from-entebbe.aspx"
+    ],
+    [
+      "20200613145639",
+      "http://connect.mail.ru/login?connect=1&page=http%3a%2f%2fconnect.mail.ru%2fshare%3fshare_url%3dhttps%253A%252F%252Fadigea.aif.ru%252Fsociety%252Fdetails%252Fprodolzhaetsya_dekada_lgotnoy_podpiski_na_gazetu_aif%2dadygeya"
+    ],
+    [
+      "20200319012135",
+      "https://pantip.com/topic/39724025"
+    ],
+    [
+      "20200630033523",
+      "https://wartakota.tribunnews.com/tag/benny-likumahuwa?url=2020/06/10/bangga-menjadi-anak-benny-likumahuwa-barry-likumahuwa-papa-sangat-jenius-dalam-bermusik"
+    ],
+    [
+      "20190204064248",
+      "https://www.kentlive.news/news/kent-news/man-arrested-after-disturbance-bower-2472479.amp"
+    ],
+    [
+      "20190913193850",
+      "http://www.thailand4.com/.evnt/2019-08-14/2b565f14e4ab99136eb8d2bae4fb8c0f/"
+    ],
+    [
+      "20190301140437",
+      "http://www.meridiano.com.ve/futbol/premier-league/190388/tottenham-sigue-sin-empatar-en-la-premier.html"
+    ],
+    [
+      "20181205141713",
+      "https://www3.smartadserver.com/ac?out=nonrich&nwid=1517&siteid=79798&pgname=hp&fmtid=34509&visit=m&tmstp=1544014186"
+    ],
+    [
+      "20200312232938",
+      "https://www.albawabhnews.com/service/nc.aspx?id=3934368"
+    ],
+    [
+      "20190914094921",
+      "https://www.todayonline.com/content/tagreuterscom2019newsmllynxnpef8403p"
+    ],
+    [
+      "20190925024635",
+      "https://m.sify.com/finance/court-rejects-bid-to-put-blixseth-into-bankruptcy-news-international-nhlhameihbjsi.html"
+    ],
+    [
+      "20200423072836",
+      "https://www.mischianti.org/2019/08/"
+    ],
+    [
+      "20210428003406",
+      "https://sr.wikipedia.org/wiki/%D0%9D%D0%B0%D0%B3%D1%80%D0%B0%D0%B4%D0%B0_%D0%A1%D0%BF%D0%B8%D1%80%D0%B8%D1%82_%D0%B7%D0%B0_%D0%BD%D0%B0%D1%98%D0%B1%D0%BE%D1%99%D0%B8_%D1%84%D0%B8%D0%BB%D0%BC"
+    ],
+    [
+      "20200527035813",
+      "https://icons8.com.br/ouch/search/%EC%A0%84%EC%A3%BC%EC%98%A4%ED%94%BC%E3%80%90www.op600.com%E3%80%91%EB%8B%AC%EC%BD%A4%EC%84%B9%EC%8B%9C%E5%9C%89%EC%A0%84%EC%A3%BC%EC%95%88%EB%A7%88%E3%88%B7%EC%A0%84%EC%A3%BC%EC%98%A4%ED%94%BC%E1%94%AA%EC%A0%84%EC%A3%BCkiss%E1%94%AE%EC%A0%84%EC%A3%BC%ED%92%80%EC%8B%B8%EB%A1%B1%E1%94%9D%EC%A0%84%EC%A3%BC%EC%98%A4%ED%94%BC%E1%91%8E%EC%A0%84%EC%A3%BC%EC%98%A4%ED%94%BC%E1%93%95%EC%A0%84%EC%A3%BC%ED%82%A4%EC%8A%A4%EB%B0%A9/"
+    ],
+    [
+      "20210518185554",
+      "https://ca.hellomagazine.com/fashion/celebrity-style/gallery/2020042588527/amanda-holden-best-britains-got-talent-outfits-photos/1/"
+    ],
+    [
+      "20181107032721",
+      "https://www.eleftheriaonline.gr/local/oikonomia/ypodomes/item/168854-to-noemvrio-i-meleti-gia-to-kalamata-rizomylos/amp"
+    ],
+    [
+      "20181209134830",
+      "http://www.bdlive.co.za/business/energy/2014/10/15/energy-funds-irregular-spending-soars"
+    ],
+    [
+      "20181102214141",
+      "http://www.lavoixdunord.fr/467097/article/2018-10-11/comportements-violents-au-ch-dron-un-jour-il-y-aura-un-drame-c-est-sur?noCookies=1"
+    ],
+    [
+      "20201102192928",
+      "https://www.grizzlybearblues.com/2020/6/4/21279941/game-preview-grizz-gaming-looking-for-third-win-nba2k-esports"
+    ],
+    [
+      "20190303185633",
+      "https://www.elcordillerano.com.ar/amp/noticias/2019/02/26/76151-impresionante-choque-sin-heridos-sobre-diagonal-capraro"
+    ],
+    [
+      "20210705095335",
+      "https://collingswood.umcommunities.org/events/"
+    ],
+    [
+      "20220104124729",
+      "https://marvamedia.wufoo.com/embed/z9zjza1mpvn62/"
+    ],
+    [
+      "20191214185722",
+      "https://avaz.ba/showbiz/jet-set/534743/holivudska-zvijezda-provozala-traktor-na-svojoj-farmi-i-odusevila-sve?amp=1"
+    ],
+    [
+      "20200429152042",
+      "https://www.googletagmanager.com/ns.html?id=GTM-PFPF5KK&pageType=Artikel&pageUrl=https:%5C/%5C/www.harzkurier.de%5C/niedersachsen%5C/article228723317%5C/Wolfenbuettel-Stadt-und-Kreisverwaltung-fuer-Besucher-zu.html&pageCategory=Niedersachsen&pageCategory02=&pageCategory03=&sectionId=14265&sectionId02=&sectionId03=&pageAGOF-IVW=bzv-hk-niedersachsen-art&pageAsmi=%5C/(nachrichten_story)&isLoggedIn=&pageArticleID=228723317&pageContentType=Nachricht&pageSourcePublication=bzv-wz&pageTitle=Wolfenb%5Cu00FCttel:%20Stadt-%20und%20Kreisverwaltung%20f%5Cu00FCr%20Besucher%20zu&pageTitleOriginal=Wolfenb%5Cu00FCttel:%20Stadt-%20und%20Kreisverwaltung%20f%5Cu00FCr%20Besucher%20zu&pageDescription=Die%20Wolfenb%5Cu00FCtteler%20Stadtverwaltung%20und%20die%20Kreisverwaltung%20schlie%5Cu00DFen%20komplett%20f%5Cu00FCr%20den%20Besuchsverkehr.%20Die%20B%5Cu00FCrger%20sollen%20sich%20telefonisch%20melden.&pageKeywords=&pageHashtags=&pageTags=Stadt,%20Kontakt,%20Verwaltung,%20Verwaltung,%20Post,%20Internet,%20Besucher,%20Telefon,%20Internet,%20Wolfenb%5Cu00FCttel,%20Kita,%20Kommunen,%20Landkreis,%20Dienstleistungen,%20Donnerstag,%20April,%20Ma%5Cu00DFnahmen,%20Standesamt,%20M%5Cu00E4rz,%20April&pagePublished=2020-03-18%2017:00:00&pageModified=2020-04-03%2014:12:26&pageDate=2020-03-18&pageDay=18&pageMonth=03&pageYear=2020&pageAuthor=Maria%20Osburg&pageSource=meth01b&isPaidContent=false&pageLengthWords=394&pagePictures=1&pageVideos=0&pageFirstClickFree=false&pagePrio=4%20-%20Normal"
+    ],
+    [
+      "20211116112557",
+      "https://www.urbanet.info/streets-cape-town/"
+    ],
+    [
+      "20200317202552",
+      "https://securepubads.g.doubleclick.net/gampad/adx?iu=/32805352/VA-Norfolk-WVEC-B3346_DesktopTablet/article_flex_btf/news/health/coronavirus&sz=970x250|728x90|1140x286|1x1&c=204"
+    ],
+    [
+      "20200630035334",
+      "https://nsjonline.com/article/2020/06/in-time-of-crises-lands-bill-gives-senate-a-chance-to-unite/"
+    ],
+    [
+      "20210813231741",
+      "https://www.calcionapoli24.it/le_interviste/malfitano-callejon-ha-la-testa-altrove-non-sarebbe-una-grave-perdita-n446733.html"
+    ],
+    [
+      "20201209190829",
+      "https://www.ellitoral.com.ar/corrientes/2020-7-19-13-50-0-festejo-musical-por-el-dia-del-amigo-con-grandes-figuras"
+    ],
+    [
+      "20200228101627",
+      "https://www.isna.ir/news/98120705559/%D8%A2%D8%A8%DA%AF%D8%B1%D9%81%D8%AA%DA%AF%DB%8C-%DB%8C%DA%A9-%D8%B1%D9%88%D8%B3%D8%AA%D8%A7-%D8%AF%D8%B1-%D8%B4%D9%88%D8%B4%D8%AA%D8%B1-%D8%B1%DB%8C%D8%B2%D8%B4-%D8%A2%D9%88%D8%A7%D8%B1-%DB%8C%DA%A9-%D9%85%D9%86%D8%B2%D9%84-%D8%AF%D8%B1-%D8%AF%D8%B2%D9%81%D9%88%D9%84"
+    ],
+    [
+      "20200319124726",
+      "https://www.eltiempo.com/cultura/arte-y-teatro/obra-vida-de-carolina-gaitan-en-el-teatro-nacional-390056"
+    ],
+    [
+      "20200826235748",
+      "https://fr.tripadvisor.ch/Attractions-g297478-Activities-c47-t7-Medellin_Antioquia_Department.html"
+    ],
+    [
+      "20200121053111",
+      "https://www.poconorecord.com/article/20150729/NEWS/150729385"
+    ],
+    [
+      "20181009194523",
+      "https://tw.news.yahoo.com/amphtml/%E8%8F%AF%E7%82%BAmate20%E8%AB%9C%E7%85%A7%E6%9B%9D%E5%85%89-%E5%B0%B1%E6%98%AF%E9%80%99%E6%A8%A3-080523792.html"
+    ],
+    [
+      "20200118192927",
+      "https://vm.ru/news/774993-predstavitel-zhvaneckogo-prokommentiroval-sluhi-o-strashnoj-bolezni/amp"
+    ],
+    [
+      "20200607204252",
+      "https://www.diariopuntual.com/node/40007"
+    ],
+    [
+      "20200503095644",
+      "https://www.rts.rs/page/stories/ci/story/2/svet/3927008/nemacka-drzavljanstvo-pasos.html"
+    ],
+    [
+      "20200420201003",
+      "https://thebestfetishsites.com/it/top-bdsm-sites/bdsmstreak/"
+    ],
+    [
+      "20200428100435",
+      "http://www.laopinionpuebla.com/ejecutan-a-hombre-en-acatzingo-2/assets/plugins/tinymce/assets/dist/css/main.css"
+    ],
+    [
+      "20190210163235",
+      "https://www.standard.co.uk/news/uk/woman-who-died-on-train-may-have-hit-head-while-leaning-out-of-window-a4006281.html?amp"
+    ],
+    [
+      "20200616034412",
+      "https://okwave.jp/amp/qa/q388029.html"
+    ],
+    [
+      "20220103002118",
+      "https://www.diarioahora.pe/tag/cc-vulnerables/"
+    ],
+    [
+      "20200428080046",
+      "https://es.player.fm/series/women-in-archaeology-2323631/gbac-2018-recap"
+    ],
+    [
+      "20191004194429",
+      "https://news.mynavi.jp/article/20190930-901554:amp/"
+    ],
+    [
+      "20200922204759",
+      "https://ko.wikipedia.org/wiki/%EB%A7%88%EA%B7%B8%EB%84%A4%ED%83%80"
+    ],
+    [
+      "20181011115314",
+      "https://www.jagran.com/business/biz-state-bank-of-india-reports-1329-fraud-cases-worth-rupees-5555-crore-18518792.html"
+    ],
+    [
+      "20200311154013",
+      "https://www.20minutos.es/noticia/4181615/0/noemi-salazar-de-gh-vip-muestra-los-retoques-esteticos-realizados-en-su-cara/"
+    ],
+    [
+      "20200627050735",
+      "https://www.sttinfo.fi/tiedote/lampaat-aloittivat-kesatyot?publisherId=67975446&releaseId=69881092"
+    ],
+    [
+      "20190703175603",
+      "https://www.consilium.europa.eu/mt/policies/sanctions/ukraine-crisis/?utm_source=dsms-auto&utm_medium=email&utm_campaign=Rechtswidrige+Annexion+der+Krim+und+Sewastopols:+EU+verl%C3%A4ngert+Sanktionen+um+ein+Jahr"
+    ],
+    [
+      "20190914005826",
+      "https://www.lavanguardia.com/opinion/20190820/464173946889/un-esfuerzo-conjunto-por-la-seguridad.html"
+    ],
+    [
+      "20200214155639",
+      "https://indianexpress.com/article/business/performance-under-vivad-se-vishwas-scheme-to-be-an-important-factor-for-postings-of-i-t-officers6267216/"
+    ],
+    [
+      "20200625205747",
+      "https://scholar.google.com/scholar_lookup?title=Evolving%20genes%20and%20proteins&author=Zuckerkandl%20E&publication_year=1965"
+    ],
+    [
+      "20190203113001",
+      "http://reporternews.com.br/noticia/429921/Terrorista_esteve_em_Sinop__Lucas_e_Caceres__diz_imprensa_italiana"
+    ],
+    [
+      "20190608005537",
+      "https://www.beaumontenterprise.com/news/us/article/The-Latest-Trump-declares-major-disaster-in-13917223.php"
+    ],
+    [
+      "20200214185427",
+      "https://lampung.tribunnews.com/amp/2020/02/13/musnahkan-knalpot-racing-hasil-razia-kasatlantas-sebut-boleh-modifikasi-kendaraan-asalkan"
+    ],
+    [
+      "20220105011456",
+      "https://justbutik.ru/catalog/abbot-kinney?subid_ref=brands"
+    ],
+    [
+      "20190426030617",
+      "https://www.nwfdailynews.com/news/20171101/crestview-teen-accused-of-stealing-car-may-be-connected-to-shooting"
+    ],
+    [
+      "20190913202631",
+      "http://www.jujuyalmomento.com/post/105426/envian-ternas-para-cinco-cargos-en-la-justicia.html"
+    ],
+    [
+      "20211104122726",
+      "https://www.cinephiled.com/genre/kino-lorber/"
+    ],
+    [
+      "20190203000452",
+      "http://thvl.vn/?p=519774"
+    ],
+    [
+      "20200110150453",
+      "https://sports.walla.co.il/item/3334167"
+    ],
+    [
+      "20180521143455",
+      "http://uzmanpara.milliyet.com.tr/haber-detay/gundem2/euro-bolgesinde-enflasyon-geriledi/82000/82578/"
+    ],
+    [
+      "20180923124732",
+      "https://in.news.yahoo.com/amphtml/planning-public-sector-diversity-162330032.html"
+    ],
+    [
+      "20210113200026",
+      "https://www.pronto.com.ar/articulo/famosos/conmovedor-mensaje-despedida-lizy-tagliani-floppy/20200728081424367663.html"
+    ],
+    [
+      "20191005075806",
+      "https://news.sina.com.tw/article/20190906/32577062.html"
+    ],
+    [
+      "20190716211901",
+      "https://www.elsoldepuebla.com.mx/finanzas/el-matematico-britanico-alan-turing-aparecera-en-nuevos-billetes-de-50-libras-3902406.html/amp"
+    ],
+    [
+      "20190402160717",
+      "http://www.nordestealdia.com/formosa/notix/noticia/76224/0000/inc.widget_video_aen.php"
+    ],
+    [
+      "20200712023529",
+      "https://epoca.globo.com/mundo/lockdown-na-india-como-quarentena-matou-mais-de-300-pessoas-que-nao-tinham-coronavirus-24464310?versao=amp"
+    ],
+    [
+      "20181122172025",
+      "https://www.chinatimes.com/newspapers/20181027000718-260102"
+    ],
+    [
+      "20190706162718",
+      "https://indiankanoon.org/doc/160675123/"
+    ],
+    [
+      "20200121141831",
+      "http://desciclopedia.ws/index.php?title=Annora_Petrova&diff=3706689&oldid=3650655"
+    ],
+    [
+      "20180723110226",
+      "https://amprensa.com/2018/07/estos-fueron-los-cambios-de-diego-boneta-para-parecerse-a-luis-miguel-en-la-serie/"
+    ],
+    [
+      "20181006165935",
+      "https://www.berria.eus/albisteak/105789/demokrazia_prozesu_dinamikotzat_jo_eta_erabakitzeko_eskubidea_babestu_du_gibernauk.htm"
+    ],
+    [
+      "20200113053745",
+      "https://1k.com.ua/aviakompaniya-budet-pokazyvat-matchi-dota-2-vo-vremya-polyotov-chempionat.html/amp"
+    ],
+    [
+      "20181213163748",
+      "https://tamil.oneindia.com/amphtml/news/tamilnadu/tn-govt-conduct-tet-exam-mk-stalin-257455.html"
+    ],
+    [
+      "20180914121145",
+      "https://www.regio7.cat/bages/2018/09/13/lajuntament-sallent-vol-inscriure-campanar/497591.html"
+    ],
+    [
+      "20200111162315",
+      "https://diariolavoz.net/2019/12/16/docente-peruano-abuso-de-una-alumna-venezolana-de-13-anos/"
+    ],
+    [
+      "20200527205826",
+      "https://www.usatoday.com/border-wall/documentaries/dist/lib/angular/lib/bootstrap/dist/css/lib/angular/lib/angular-cookies/lib/moment/lib/jquery/dist/jquery.min.js"
+    ],
+    [
+      "20190623153546",
+      "https://www.modbee.com/sports/article231869813.html"
+    ],
+    [
+      "20180830120114",
+      "http://bartabazar.com/archives/43562"
+    ]
+  ]
+}
