@@ -47,6 +47,7 @@
   <script>
     const lists = {
       "attr": ["src", "item", "name", "report", "playback", "type", "format", "thumbs", "drawer"],
+      "src": ["samples/MC.summary.json", "samples/EoT20.summary.json"],
       "item": ["mediacloud", "EndOfTerm2020WebCrawls", "epa-via-sitemap"],
       "type": ["CDX", "collection", "item"],
       "format": ["short", "percent", "local"]
@@ -60,7 +61,8 @@
     const visf = `
     <form id="cdxsummary">
       &lt;cdx-summary
-      ${f('src')}<input name="src" value="${g('src')}" placeholder="Summary file URL (Optional if item is provided)" class="wide-input">&quot;
+      ${f('src')}<input name="src" value="${g('src')}" placeholder="Summary file URL (Optional if item is provided)" list="src-list" class="wide-input">&quot;
+      ${d('src')}
       ${f('item')}<input name="item" value="${g('item')}" placeholder="Collection/Item ID (Optional if src is provided)" list="item-list" class="wide-input">&quot;
       ${d('item')}
       ${f('name')}<input name="name" value="${g('name')}" placeholder="Default: Derived from filename" class="wide-input">&quot;

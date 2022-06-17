@@ -1,0 +1,605 @@
+{
+  "captures": 1599713767,
+  "urls": 906796744,
+  "hosts": 1396372,
+  "bytes": 289158184502345,
+  "first": "20201009165718",
+  "last": "20210531214138",
+  "tophosts": {
+    "godirect.gov": 27970110,
+    "zoneplate.lbl.gov": 24672475,
+    "gateway.womenshealth.gov": 18634496,
+    "riversideca.gov": 16997632,
+    "yanktongirlssoftball.com": 15788728,
+    "docarc.cstx.gov": 14982627,
+    "cliftonlivestock.com": 14756688,
+    "smgov.net": 14516744,
+    "domrep.org": 13793694,
+    "disc-beta.gsfc.nasa.gov": 13293849,
+    "transparency.treasury.gov": 12501553,
+    "twitter.com": 12184155,
+    "stjosephcountyindiana.com": 11821004,
+    "amnh.org": 11102585,
+    "eric.ed.gov": 11072824,
+    "lakeelmo.org": 10523319,
+    "shop.nga.gov": 10255124,
+    "fldep.dep.state.fl.us": 9989408,
+    "cityofnorthlasvegas.com": 9897695,
+    "docushare.xerox.com": 9811692
+  },
+  "mimestatus": {
+    "HTML": {
+      "2XX": 851177652,
+      "3XX": 494578100,
+      "4XX": 41454034,
+      "5XX": 4554043,
+      "Other": 1386
+    },
+    "Image": {
+      "2XX": 44300431,
+      "3XX": 36335,
+      "4XX": 21060,
+      "5XX": 734,
+      "Other": 0
+    },
+    "CSS": {
+      "2XX": 4439006,
+      "3XX": 576,
+      "4XX": 716,
+      "5XX": 38,
+      "Other": 0
+    },
+    "JavaScript": {
+      "2XX": 4400795,
+      "3XX": 810,
+      "4XX": 2158,
+      "5XX": 53,
+      "Other": 0
+    },
+    "JSON": {
+      "2XX": 3691208,
+      "3XX": 189886,
+      "4XX": 158445,
+      "5XX": 3361,
+      "Other": 14
+    },
+    "XML": {
+      "2XX": 7148560,
+      "3XX": 873499,
+      "4XX": 299052,
+      "5XX": 13540,
+      "Other": 0
+    },
+    "Text": {
+      "2XX": 17998669,
+      "3XX": 4870810,
+      "4XX": 6160565,
+      "5XX": 50424,
+      "Other": 0
+    },
+    "PDF": {
+      "2XX": 19041608,
+      "3XX": 331067,
+      "4XX": 5207,
+      "5XX": 36,
+      "Other": 0
+    },
+    "Font": {
+      "2XX": 365010,
+      "3XX": 20,
+      "4XX": 202,
+      "5XX": 7,
+      "Other": 0
+    },
+    "Audio": {
+      "2XX": 202037,
+      "3XX": 396,
+      "4XX": 1,
+      "5XX": 0,
+      "Other": 0
+    },
+    "Video": {
+      "2XX": 405765,
+      "3XX": 5815,
+      "4XX": 297,
+      "5XX": 2,
+      "Other": 0
+    },
+    "Revisit": {
+      "2XX": 0,
+      "3XX": 0,
+      "4XX": 0,
+      "5XX": 0,
+      "Other": 297036
+    },
+    "Other": {
+      "2XX": 20020764,
+      "3XX": 69817051,
+      "4XX": 2729356,
+      "5XX": 66130,
+      "Other": 0
+    }
+  },
+  "pathquery": {
+    "P0": {
+      "Q0": 106084299,
+      "Q1": 8226912,
+      "Q2": 2925331,
+      "Q3": 10487624,
+      "Q4": 5409111,
+      "Other": 7453637
+    },
+    "P1": {
+      "Q0": 278751033,
+      "Q1": 26563787,
+      "Q2": 17731586,
+      "Q3": 25687237,
+      "Q4": 42115265,
+      "Other": 49740721
+    },
+    "P2": {
+      "Q0": 164212602,
+      "Q1": 21325779,
+      "Q2": 23599613,
+      "Q3": 26504333,
+      "Q4": 21686779,
+      "Other": 38410315
+    },
+    "P3": {
+      "Q0": 53975457,
+      "Q1": 21301175,
+      "Q2": 7615021,
+      "Q3": 8768914,
+      "Q4": 11590397,
+      "Other": 26142236
+    },
+    "P4": {
+      "Q0": 65894706,
+      "Q1": 13717459,
+      "Q2": 3148806,
+      "Q3": 4278359,
+      "Q4": 6960742,
+      "Other": 8485917
+    },
+    "Other": {
+      "Q0": 432814746,
+      "Q1": 39842742,
+      "Q2": 7572526,
+      "Q3": 3604897,
+      "Q4": 937408,
+      "Other": 6146295
+    }
+  },
+  "yearmonth": {
+    "2020": {
+      "01": 0,
+      "02": 0,
+      "03": 0,
+      "04": 0,
+      "05": 0,
+      "06": 0,
+      "07": 0,
+      "08": 0,
+      "09": 0,
+      "10": 257769014,
+      "11": 335251668,
+      "12": 384880918
+    },
+    "2021": {
+      "01": 236592096,
+      "02": 2236,
+      "03": 72405443,
+      "04": 138068337,
+      "05": 174744055,
+      "06": 0,
+      "07": 0,
+      "08": 0,
+      "09": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0
+    }
+  },
+  "samples": [
+    [
+      "20201114222149",
+      "https://www.algomacity.org/cityofalgoma/government/government/committees_agendas___minutes/departments/public_works_department/departments/finance/departments/_assets_/css/_assets_/plugins/modernizr/modernizr.custom.js"
+    ],
+    [
+      "20201009233029",
+      "https://rsicc.ornl.gov/javascript/App_Themes/Skin4/menumachine/javascript/menumachine/home/javascript/menumachine/javascript/menumachine/menumachine/home/javascript/javascript/menumachine/menumachine/home/menuspecs.js"
+    ],
+    [
+      "20201010233128",
+      "https://2014-2017.commerce.gov/sites/all/themes/doc/doc_theme/scripts/modules/system/misc/modules/user/sites/all/modules/contrib/views_tree/css/modules/search/searchd41d.css"
+    ],
+    [
+      "20201010150539",
+      "https://gateway.womenshealth.gov/bower_components/file-saver/bower_components/nvd3/build/vendor/leaflet-image/bower_components/dom-to-image/dist/bower_components/angular-translate-loader-static-files/bower_components/d3/bower_components/jstree/dist/jstree.js"
+    ],
+    [
+      "20210113035031",
+      "https://cdnp.flypgs.com/"
+    ],
+    [
+      "20210505182158",
+      "https://catalog.usmint.gov/coins/coin-programs/america-the-beautiful-quarters-program/tallgrass-prairie-national-preserve-kansas/?prefn1=coinFinish&prefv1=circulated&prefn2=enrollmentIsAvailable&prefv2=AT&pmin=25.00&pmax=50.00"
+    ],
+    [
+      "20201014164527",
+      "https://gateway.womenshealth.gov/bower_components/file-saver/bower_components/plotly.js/dist/app/components/owh-menu/bower_components/angular-ui-router/release/bower_components/jquery/dist/bower_components/d3/bower_components/angular-loader/app/app.resource.js"
+    ],
+    [
+      "20210326232402",
+      "https://upwell.pfeg.noaa.gov/erddap/info/noaa_esrl_e6c2_428b_cdd1/index.html"
+    ],
+    [
+      "20210426200303",
+      "http://www.usarmyjrotc.com/news/20/08/css2/scripts/lightbox2-master/dist/js/events/jlab.php"
+    ],
+    [
+      "20201019223754",
+      "https://www.tennille-ga.gov/officials/departments/public_works/departments/tennille_city_hall/living_and_visiting/where_to_shop.php"
+    ],
+    [
+      "20201219153747",
+      "https://www.westhaverstraw.org/government/departments/Documents%20Center/Resources/Forms/community/government/departments/_assets_/fonts/font-awesome/css/government/departments/building_department.php"
+    ],
+    [
+      "20201117181402",
+      "https://thegateway.org/Online/error.asp"
+    ],
+    [
+      "20201224103505",
+      "http://townofcopake.org/calendar/action~oneday/exact_date~1635739200/cat_ids~23,25,22,32,16/request_format~html/"
+    ],
+    [
+      "20201211091720",
+      "http://www.cityofnorthlasvegas.com/_assets_/fonts/departments/city_clerk/access_city_agendas_and_minutes/residents/departments/city_manager/residents/community_links/residents/residents_s_-_u/residents/community_links/post_offices.php"
+    ],
+    [
+      "20201111140835",
+      "https://www.transparency.treasury.gov/article/assets/reports/fir-mts/dataset/assets/reports/fir-rcm/lib/babel-polyfill/assets/reports/fir-dms/dataset/assets/reports/fir-rcm/rcm.min.js?v=131"
+    ],
+    [
+      "20210501144613",
+      "https://collections.nlm.nih.gov/?f%5Bdrep2.format%5D%5B%5D=Moving+image&f%5Bdrep2.subjectAggregate%5D%5B%5D=Dissection&f%5Bdrep2.subjectAggregate%5D%5B%5D=Mouth+Floor+--+anatomy+%26+histology&per_page=10"
+    ],
+    [
+      "20201020223449",
+      "https://www.townofwarren-ri.gov/town_government/departments/public_works/_assets_/fonts/font-awesome/css/i_want_to/_assets_/plugins/modernizr/modernizr.custom.js"
+    ],
+    [
+      "20201219001002",
+      "https://www.norwaymi.gov/departments/city_assessor/departments/city_manager/departments/city_code_enforcement_officer/_assets_/plugins/bootstrap/js/departments/fire_department/index.php"
+    ],
+    [
+      "20201024234714",
+      "https://heinonline.org/HOL/Index?index=statdocs&collection=statute"
+    ],
+    [
+      "20210119004111",
+      "https://eric.ed.gov/?q=%22%22&ff1=subHyperactivity&ff2=pubDissertations%2fTheses+-+Doctoral+Dissertations&ff3=subAdolescents&ff4=souProQuest+LLC"
+    ],
+    [
+      "20210522025339",
+      "https://toolkit.climate.gov/reports?f%5B0%5D=field_parent_topic%3A665&f%5B1%5D=field_state%3AMississippi&f%5B2%5D=field_state%3ANorth%20Dakota&f%5B3%5D=field_state%3AColorado"
+    ],
+    [
+      "20210408041529",
+      "https://www.invasivespeciesinfo.gov/resources-indexed?f%5B0%5D=field_location%3A84&f%5B1%5D=field_location%3A136&f%5B2%5D=field_location%3A145&f%5B3%5D=field_location%3A134&f%5B4%5D=field_location%3A158"
+    ],
+    [
+      "20210107235925",
+      "http://applibrary.orangecountync.gov/iii/calendar/list/C&M=7-2019/F;jsessionid=4758441ECBDE2A838D1D5B74B116DF36?lang=eng&suite=def"
+    ],
+    [
+      "20201016160631",
+      "https://www.americusga.gov/city-government"
+    ],
+    [
+      "20201221111225",
+      "http://domrep.org/"
+    ],
+    [
+      "20210408211329",
+      "https://e-learning.commerce.gov/ssLINK/NewsRoom/DeputySecretarySpeeches/s/websites/DOC/CommerceDeputySecretary/index.format_for_print-true.html"
+    ],
+    [
+      "20210103032220",
+      "https://www.transparency.treasury.gov/article/assets/reports/fir-open-data/assets/reports/fir-top/lib/marked/assets/reports/fir-top/assets/reports/fir-mts/lib/assets/reports/fir-top/lib/marked/lib/babel-polyfill/polyfill.min.js"
+    ],
+    [
+      "20201012031750",
+      "http://zoneplate.lbl.gov/img/css/lib/bootstrap/js/assets/lib/bootstrap/js/lib/bootstrap/css/css/lib/rhmiyakawa/lib/angular-1.2-2.16/angular-cookies.min.js"
+    ],
+    [
+      "20201024213533",
+      "http://www.legislature.maine.gov/statutes/24/title24sec957.html"
+    ],
+    [
+      "20201104132812",
+      "https://newspapers.library.in.gov/?a=a&command=ShowAuthenticateUserPage&opa=a%3dcl%26cl%3dCL2.1867.11%26e%3d20-02-1914-21-02-1914--en-20--1--txt-txIN-chirka------&e=20-02-1914-21-02-1914--en-20--1--txt-txIN-chirka------"
+    ],
+    [
+      "20201229123931",
+      "https://dotcms.fra.dot.gov/elibrary-search?f%5B0%5D=document_series%3A14741&f%5B1%5D=document_series%3A14776&f%5B2%5D=subject%3A14286&f%5B3%5D=subject%3A14301&f%5B4%5D=subject%3A14381&f%5B5%5D=subject%3A14436&f%5B6%5D=subject%3A14441&f%5B7%5D=subject%3A14541"
+    ],
+    [
+      "20201203114742",
+      "https://www.hilliardcorp.com/404.php"
+    ],
+    [
+      "20210325014038",
+      "https://edx.netl.doe.gov/dataset/?_tags_limit=0&tags=water&res_format=JPG"
+    ],
+    [
+      "20201130195057",
+      "https://www.nwk.usace.army.mil/Locations/District-Lakes/Smithville-Lake/igphoto/2000722451/igphoto/2000722939/igphoto/2000722840/igphoto/2000722916/igphoto/2000723064/igphoto/2000722530/igphoto/2000723067/"
+    ],
+    [
+      "20210326135026",
+      "https://www.psl.noaa.gov/thredds/catalog/Datasets/20thC_ReanV2c/pressure/catalog.html?dataset=Datasets/20thC_ReanV2c/pressure/shum.1958.nc"
+    ],
+    [
+      "20201122125250",
+      "https://www.drought.gov/drought/search/event?f%5B0%5D=field_states%3A129&f%5B1%5D=field_states%3A117&f%5B2%5D=field_states%3A93&f%5B3%5D=field_dews_regions%3A146&f%5B4%5D=field_states%3A90"
+    ],
+    [
+      "20201205053530",
+      "https://www.ogdenny.com/town_departments/assessors_office/_assets_/fonts/font-awesome/css/_assets_/js/town_departments/town_clerk/town_departments/building/planning_board.php"
+    ],
+    [
+      "20201104090615",
+      "http://www.cityofnorthlasvegas.com/_assets_/fonts/departments/city_manager/departments/community_development_and_compliance/docs/NLS/departments/city_manager/online_services/departments/mayor_and_council/departments/utilities/index.php"
+    ],
+    [
+      "20201009213630",
+      "https://disc-beta.gsfc.nasa.gov/fonts/bootstrap/lib/angular-toastr/dist/modules/commons/directives/spinner/modules/commons/directives/backToTop.js"
+    ],
+    [
+      "20201111145810",
+      "https://www.gatlinburgtn.gov/departments/planning/codes_and_permits/_assets_/plugins/modernizr/departments/sanitation/residents/information/_assets_/images/inner-logo.png"
+    ],
+    [
+      "20201218053018",
+      "https://www.azdhs.gov/preparedness/epidemiology-disease-control/infectious-disease-epidemiology/assets/plugins/html_markdown/bootstrap-markdown.min.js"
+    ],
+    [
+      "20201011101424",
+      "https://jsrunvisualizer.olcf.ornl.gov/resources/fonts/resources/bootstrap/resources/jquery/resources/fabric/resources/fabric/resources/bootstrap/resources/jquery/resources/fabric/resources/jquery/resources/example1.png"
+    ],
+    [
+      "20201020034602",
+      "https://www.ornl.gov/staff-profile/debanjana-nayak"
+    ],
+    [
+      "20201028103218",
+      "https://www.oxnard.org/event/tuesday-crafternoons-at-south-oxnard-2/?instance_id=9292274"
+    ],
+    [
+      "20210416045541",
+      "https://origin-www.acquisition.gov/search/advanced/%2A?f%5B0%5D=sm_field_part_number%3A2904&f%5B1%5D=bundle%3Adolar"
+    ],
+    [
+      "20201016180727",
+      "http://seattle.legistar.com/LegislationDetail.aspx?ID=3151928&GUID=EEFF882C-B64C-49DC-823A-67676A832B9C&Options=&Search="
+    ],
+    [
+      "20201109103816",
+      "https://www.twc.texas.gov/jobseekers"
+    ],
+    [
+      "20201016165054",
+      "https://teens.drugabuse.gov/national-drug-alcohol-facts-week/tweet-beyond-belief"
+    ],
+    [
+      "20210324215935",
+      "https://rmp.nlm.nih.gov/spotlight/ql/catalog?f%5Bexhibit_tags%5D%5B%5D=biographical&f%5Breadonly_genre_ssim%5D%5B%5D=Letters+%28correspondence%29"
+    ],
+    [
+      "20201029144039",
+      "https://blog.epa.gov/"
+    ],
+    [
+      "20201121082208",
+      "http://www.cityofnorthlasvegas.com/_assets_/css/residents/community_links/departments/human_resources/_assets_/img/departments/city_clerk/departments/city_clerk/access_city_agendas_and_minutes/docs/NLS/Park%20Trail%20Guide.pdf"
+    ],
+    [
+      "20201214031020",
+      "https://eric.ed.gov/?q=source%3a%22Literacy+Research+and+Instruction&ff1=souJournal+of+Educational+Computing+Research&ff2=dtySince_2016"
+    ],
+    [
+      "20201207170446",
+      "https://data.baltimorecity.gov/browse?Publishing-Entity_Department=Aging+and+Retirement+Education&category=City+Services&provenance=community&sortBy=relevance&tags=recreation"
+    ],
+    [
+      "20210331015743",
+      "https://www.justice.gov/crt/civil-rights-division-press-releases-speeches?f%5B0%5D=field_pr_component%3A436&f%5B1%5D=field_pr_date%3A2016&f%5B2%5D=field_pr_component%3A7751"
+    ],
+    [
+      "20201012065056",
+      "https://gateway.womenshealth.gov/bower_components/file-saver/app/css/bower_components/angular-awesome-slider/dist/css/bower_components/angular-route/app/components/owh-table/bower_components/angular-translate/app/services/map.service.js"
+    ],
+    [
+      "20201031231002",
+      "https://secure.tsp.gov/tsp/login.html"
+    ],
+    [
+      "20210512050534",
+      "https://snaped.fns.usda.gov/library/materials?lib%5B0%5D=format%3A8&lib%5B1%5D=format%3A31&lib%5B2%5D=setting%3A33&lib%5B3%5D=state%3A159&lib%5B4%5D=state%3A175"
+    ],
+    [
+      "20210106080824",
+      "https://heinonline.org/HOL/Index?collection=stair&set_as_cursor=clear"
+    ],
+    [
+      "20201111083106",
+      "https://foursquare.com/user/81072002"
+    ],
+    [
+      "20210417075845",
+      "https://mbda.commerce.gov/NewsRoom/PressReleases_FactSheets/DOC/OS/NewsRoom/PressReleases_FactSheets/Services/Services/index.html"
+    ],
+    [
+      "20201019030214",
+      "https://www.pioneercenter.com/Online/error.asp"
+    ],
+    [
+      "20201118214329",
+      "https://www.xcm.org/XCMWebSite/Content/jQuery/css/Content/bootstrap/js/Content/daterangepicker/Content/pixie/css/Scripts/Directives/Content/Openlayers/V4/Content/bootstrap/js/Content/pixie/css/Content/CodeMirror/js/xml-fold.js"
+    ],
+    [
+      "20201223114500",
+      "http://www.sansabatexas.com/calendar/action~oneday/exact_date~1604988000/cat_ids~281,325,283,271/request_format~html/"
+    ],
+    [
+      "20201101124216",
+      "https://www.tigard-or.gov/police/chief.php/feedback/completestreets/programs/index.php"
+    ],
+    [
+      "20201120134151",
+      "https://spyflight.co.uk/404/index.php"
+    ],
+    [
+      "20210429005203",
+      "https://nifa.usda.gov/grant-search/field_who_is_eligible_to_apply/profit-organizations-other-small-businesses-10/field_who_is_eligible_to_apply/1994-land-grant-institutions-2/field_special_notation/434/field_special_notation/399"
+    ],
+    [
+      "20201109181337",
+      "https://www.loc.gov/websites/?fa=contributor:kosovo+%28republic%29%7Csubject:criminal+justice,+administration+of"
+    ],
+    [
+      "20201215090525",
+      "https://permits.cityofirvine.org/irvinepermits/Default.asp"
+    ],
+    [
+      "20210329183536",
+      "https://developer.uspto.gov/data?f%5B0%5D=product_category%3A39180&f%5B1%5D=product_category%3A39198&f%5B2%5D=product_category%3A39203&f%5B3%5D=product_category%3A39213&f%5B4%5D=published_datasets%3A39202"
+    ],
+    [
+      "20201009223700",
+      "https://api.transparency.treasury.gov/lib/fonts/images/lib/firCentral/images/lib/firCentral/assets/reports/fir-api-explorer/assets/reports/fir-rcm/assets/reports/fir-rcm/lib/angular-bind-html-compile/angular-bind-html-compile.js"
+    ],
+    [
+      "20201021104607",
+      "https://collections.nlm.nih.gov/?f%5bdrep2.isMemberOfCollection%5d%5b%5d=DREPIHM"
+    ],
+    [
+      "20201206041213",
+      "https://www.drought.gov/drought/search/event?f%5B0%5D=field_region%3A76&f%5B1%5D=field_region%3A74&f%5B2%5D=field_states%3A84&f%5B3%5D=field_region%3A75&f%5B4%5D=field_states%3A90&f%5B5%5D=field_states%3A95&f%5B6%5D=field_states%3A120&f%5B7%5D=field_states%3A97"
+    ],
+    [
+      "20210325203035",
+      "https://nesr.usda.gov/search?query=&f%5B0%5D=topic%3A77&f%5B1%5D=topic%3A490"
+    ],
+    [
+      "20201209002709",
+      "https://developer.epa.gov/"
+    ],
+    [
+      "20210430074401",
+      "https://www.fas.usda.gov/data/search?f%5B0%5D=field_countries%3A379&f%5B1%5D=field_commodities%3A34&f%5B2%5D=field_countries%3A410&f%5B3%5D=field_countries%3A399"
+    ],
+    [
+      "20210110074557",
+      "http://www.lakeelmo.org/government/government/residents/parks/government/residents/public_notices.php"
+    ],
+    [
+      "20210115231217",
+      "https://www.asheboronc.gov/government/departments/planning___zoning/government/records_retention/_assets_/plugins/bootstrap/css/sunset_theatre/how_do_i/_assets_/fonts/font-awesome/css/font-awesome.min.css"
+    ],
+    [
+      "20210425054512",
+      "https://oceancolor.gsfc.nasa.gov/cgi/browse.pl?per=MO&day=2435&sub=level3&prm=CHL&set=10&ndx=0&mon=2160&sen=cz&rad=0&frc=0&dnm=D@M"
+    ],
+    [
+      "20201106023919",
+      "https://www.shopmyexchange.com/browse/baby-toys/_/N-4294812204+2193263988+103179"
+    ],
+    [
+      "20210418130301",
+      "https://www.omao.noaa.gov/topic/general/equipment?qt-qt_global_articles=0&qt-qt_global_images=4"
+    ],
+    [
+      "20210327111737",
+      "https://www.nwcouncil.org/news?f[0]=field_tags:131&f[1]=field_tags:105&f[2]=field_author:3821"
+    ],
+    [
+      "20210506232717",
+      "https://catalog.data.gov/dataset?tags=alaska&bureauCode=019%3A20&tags=geologic-atlas"
+    ],
+    [
+      "20201122092621",
+      "https://donate.seedmoney.org/embed/card-view/app/bower_components/moment/min/app/bower_components/ng-file-upload/app/bower_components/ng-clip-master/dest/app/bower_components/angular-froala/src/scripts/controllers/HomeCtrl.bd7e5ac9.js"
+    ],
+    [
+      "20201210070257",
+      "https://www.oxfordnc.org/community/economic_development/departments/departments/public_works/departments/parks___recreation/government/other_city_boards_and_commissions.php"
+    ],
+    [
+      "20210119093327",
+      "https://www.asheboronc.gov/government/government/departments/planning___zoning/government/boards_and_commissions/_assets_/plugins/bootstrap/js/businesses/_assets_/fonts/font-awesome/css/font-awesome.min.css"
+    ],
+    [
+      "20201110062007",
+      "https://foursquare.com/v/muzeul-civiliza%C8%9Biei-populare-tradi%C8%9Bionale-astra/4c4ae38cc8b6b71320542efb"
+    ],
+    [
+      "20201103133355",
+      "https://e4ftl01.cr.usgs.gov/MOTA/MCD43D33.006/2007.02.18/"
+    ],
+    [
+      "20201108042116",
+      "http://www.pcsheriff.org/'covid19.nj.gov'"
+    ],
+    [
+      "20201221002909",
+      "https://www.redcross.org/store/preparedness/emergency-supplies/emergency-radio-weather-radio?prefn1=IsCourse&prefv1=false&prefn2=color&prefv2=Smoke%20%24%24%2348474D%7CWhite%20%24%24%23FFFFFF%7CSteel%20Grey%20%24%24%23848484%7CArmy%20Green%20%24%24%235DBCD2&prefn3=isDistributor&prefv3=false"
+    ],
+    [
+      "20201106184631",
+      "https://www.tennille-ga.gov/departments/planning_and_zoning/_assets_/plugins/bootstrap/css/_assets_/js/officials/city_council/February%203%202020.pdf"
+    ],
+    [
+      "20201231081254",
+      "https://www.fs.usda.gov/treesearch/search?keywords=%22forest%20management%22&f%5B0%5D=author_facet%3A%22Lambert%2C%20Samuel%22"
+    ],
+    [
+      "20201012161113",
+      "https://gateway.womenshealth.gov/bower_components/file-saver/app/vendor/leaflet-image/bower_components/angular-sanitize/app/css/bower_components/angular-aria/app/components/app/modules/search/search.service.js"
+    ],
+    [
+      "20201010022339",
+      "https://disc.sci.gsfc.nasa.gov/fonts/bootstrap/scripts/css/lib/MathJax/lib/MathJax/scripts/scripts/lib/MathJax/css/scripts/css/css/scripts/scripts/app.js"
+    ],
+    [
+      "20210104054831",
+      "https://www.arcadiaca.gov/enrich/arcadia_public_library/general_information/whats_new_at_the_library.php/_assets_/plugins/ytplayer/discover/city_manager_s_office/discover/city_council/enrich/recreation___community_services/teen_programs/shape/public_works_services_department/water___sewer_services/_assets_/images/contact-1.png"
+    ],
+    [
+      "20210527183947",
+      "https://www.ecfr.gov/cgi-bin/text-idx?SID=488e712fd8066ecfe1f0ceb612fd564a&mc=true&node=se42.4.431_1200&rgn=div8"
+    ],
+    [
+      "20210104163824",
+      "https://www.millikenco.gov/government/town_board_of_trustees/town_services/parks_and_lakes/alert_signup/business/business/_assets_/images/favicon.ico"
+    ],
+    [
+      "20210102002617",
+      "http://townofcopake.org/calendar/action~oneday/exact_date~1605243600/cat_ids~21,16,37,44,36/request_format~html/"
+    ],
+    [
+      "20210326103953",
+      "https://2014-2017.commerce.gov/sites/commerce.gov/files/adaptivetheme/doc_theme_files/sites/all/themes/doc/doc_theme/scripts/media/photo/sites/commerce.gov/files/styles/scalecrop_100x100/public/spp_page_roundtable_discussion_with_ges_delegates.jpg"
+    ],
+    [
+      "20201017000911",
+      "https://villageflowerhill.org/mayor-herrington-addresses-st-francis-hospital-expansion-plans-for-oaktree-lane/"
+    ],
+    [
+      "20210514074925",
+      "https://forecast.weather.gov/product.php?site=BRO&product=CF6&issuedby=WAL"
+    ]
+  ]
+}
