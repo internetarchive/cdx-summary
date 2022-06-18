@@ -171,7 +171,7 @@ ${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, '
 <div class="sample-thumbs">
 ${[...ridx].map(i => `
   <div class="thumb-container">
-    <div class="thumb">
+    <div class="thumb" style="animation-delay: -${Math.random()*10}s;">
       <a href="${this.urim(s[i][0], s[i][1])}">${s[i][1]}</a>
       <iframe src="${this.urim(s[i][0], s[i][1], 'if_')}" sandbox="allow-same-origin allow-scripts" scrolling="no" frameborder="0" onload="this.style.backgroundColor='white'"></iframe>
     </div>
@@ -358,11 +358,18 @@ ${this.sampleCapturesList()}
     border: 1px solid #333;
     border-radius: 4px;
     padding: 2px;
-    background-color: #fff;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 58 58' style='enable-background:new 0 0 58 58' xml:space='preserve'%3E%3Cpath fill='lightgray' d='M31 56h24V32H31v24zm2-22h9v12.586l-4.293-4.293-1.414 1.414L43 50.414l6.707-6.707-1.414-1.414L44 46.586V34h9v20H33V34zM21.569 13.569C21.569 10.498 19.071 8 16 8s-5.569 2.498-5.569 5.569c0 3.07 2.498 5.568 5.569 5.568s5.569-2.497 5.569-5.568zm-9.138 0C12.431 11.602 14.032 10 16 10s3.569 1.602 3.569 3.569-1.601 3.569-3.569 3.569-3.569-1.601-3.569-3.569zM6.25 36.661a.997.997 0 0 0 1.41.09l16.313-14.362 7.319 7.318a.999.999 0 1 0 1.414-1.414l-1.825-1.824 9.181-10.054 11.261 10.323a1 1 0 0 0 1.351-1.475l-12-11a1.002 1.002 0 0 0-1.414.063l-9.794 10.727-4.743-4.743a1.003 1.003 0 0 0-1.368-.044L6.339 35.249a1 1 0 0 0-.089 1.412z'/%3E%3Cpath fill='lightgray' d='M57 2H1a1 1 0 0 0-1 1v44a1 1 0 0 0 1 1h24a1 1 0 1 0 0-2H2V4h54v25a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z'/%3E%3C/svg%3E");
-    background-position: center;
+    background: linear-gradient(45deg, #eee, #333, #eee);
+    background-size: 50% 2px;
     background-repeat: no-repeat;
-    background-size: 30%;
+    animation: loader 10s ease infinite;
+  }
+  @keyframes loader {
+    0%, 100% {
+      background-position: left 10px top 2px;
+    }
+    50% {
+      background-position: right 10px top 2px;
+    }
   }
   .thumb a {
     display: block;
