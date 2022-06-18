@@ -171,7 +171,7 @@ ${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, '
 <div class="sample-thumbs">
 ${[...ridx].map(i => `
   <div class="thumb-container">
-    <div class="thumb" style="animation-delay: -${Math.random()*10}s;">
+    <div class="thumb" style="animation-delay: -${Math.random()*10|0}s;">
       <a href="${this.urim(s[i][0], s[i][1])}">${s[i][1]}</a>
       <iframe src="${this.urim(s[i][0], s[i][1], 'if_')}" sandbox="allow-same-origin allow-scripts" scrolling="no" frameborder="0" onload="this.style.backgroundColor='white'"></iframe>
     </div>
