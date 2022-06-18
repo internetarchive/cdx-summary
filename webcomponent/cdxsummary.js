@@ -289,7 +289,6 @@ ${this.sampleCapturesList()}
     border-collapse: collapse;
     display: block;
     max-width: fit-content;
-    margin: 0 auto;
     overflow-x: auto;
     white-space: nowrap;
   }
@@ -341,9 +340,6 @@ ${this.sampleCapturesList()}
   }
   details.samples:not([open]) summary::after {
     content: attr(data-close);
-  }
-  .sample-thumbs {
-    text-align: center;
   }
   .thumb-container {
     width: 294px;
