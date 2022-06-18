@@ -359,6 +359,7 @@ ${this.sampleCapturesList()}
     border-radius: 4px;
     padding: 2px;
     background: linear-gradient(45deg, #eee, #333, #eee);
+    background-position: center 2px;
     background-size: 50% 2px;
     background-repeat: no-repeat;
     animation: loader 10s ease infinite;
