@@ -47,6 +47,20 @@ export class CDXSummary extends HTMLElement {
     return `${this.playback}/${dt}${mod}/${urir}`;
   }
 
+  randNums(size, samples=1) {
+    const sidx = [...Array(size).keys()];
+    if(samples >= size) {
+      return sidx;
+    }
+    const ridx = [];
+    for (let i=0; i < samples; i++) {
+      const r = Math.floor(Math.random()*(size-i));
+      ridx[i] = sidx[r];
+      sidx[r] = sidx[size-i-1];
+    }
+    return ridx;
+  }
+
   overviewTable() {
     return `
 <table>
@@ -81,7 +95,7 @@ export class CDXSummary extends HTMLElement {
   }
 
   gridTable(obj, group='', cols=[], format=c=>c) {
-    if (!cols.length) {
+    if(!cols.length) {
       cols = Object.keys(Object.values(obj)[0]);
     }
     const colSum = cols.reduce((a, k) => {a[k] = 0; return a}, {});
@@ -152,7 +166,7 @@ export class CDXSummary extends HTMLElement {
 
   sampleCapturesList() {
     return `
-<details ${this.drawer} class="samples">
+<details${this.fold.includes('samples') ? '' : ' open'} class="samples">
 <summary data-open="Hide Sample URIs" data-close="Show ${this.data.samples.length} Random Sample URIs"></summary>
 <ul>
 ${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, ''))).sort((a, b) => a[2].length - b[2].length).map(s => `<li><a href="${this.urim(s[0], s[1])}">${s[2]}</a></li>`).join('\n')}
@@ -162,28 +176,21 @@ ${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, '
   }
 
   sampleThumbs() {
-    let s = this.data.samples;
-    const ridx = new Set();
-    while (ridx.size < Math.min(this.thumbs, s.length)) {
-      ridx.add(Math.floor(Math.random()*s.length));
-    }
-    return `
-<div class="sample-thumbs">
-${[...ridx].map(i => `
-  <div class="thumb-container">
-    <div class="thumb" style="animation-delay: -${Math.random()*10|0}s;">
-      <a href="${this.urim(s[i][0], s[i][1])}">${s[i][1]}</a>
-      <iframe src="${this.urim(s[i][0], s[i][1], 'if_')}" sandbox="allow-same-origin allow-scripts" scrolling="no" frameborder="0" onload="this.style.backgroundColor='white'"></iframe>
-    </div>
+    const s = this.data.samples;
+    const ridx = this.randNums(s.length, this.thumbs);
+    return this.randNums(s.length, this.thumbs).map(i => `
+<div class="thumb-container">
+  <div class="thumb" style="animation-delay: -${Math.random()*10|0}s;">
+    <a href="${this.urim(s[i][0], s[i][1])}">${s[i][1]}</a>
+    <iframe src="${this.urim(s[i][0], s[i][1], 'if_')}" sandbox="allow-same-origin allow-scripts" scrolling="no" frameborder="0" onload="this.style.backgroundColor='white'"></iframe>
   </div>
-`).join('\n')}
 </div>
-`;
+`).join('\n');
   }
 
   renderSummary() {
     const container = this.shadow.getElementById('container');
-    if (this.data['msg']) {
+    if(this.data['msg']) {
       container.innerHTML = `<p class="msg">${this.data['msg']}</p>`;
       return;
     }
@@ -200,14 +207,14 @@ Insignificant values might be reported as <code>0.00%</code>.
 </p>
 
 <h2>Overview</h2>
-<p>
+<p${this.compact}>
 This overview is based on the sorted unique capture index (CDX) file of all the WARC files in the ${this.type}.
 The <code>Total WARC Records Size</code> value is neither the combined size of the WARC files nor the sum of the sizes of the archived resources, instead, it is the sum of the sizes of the compressed WARC Response records (including their headers).
 </p>
 ${this.overviewTable()}
 
 <h2>MIME Type and Status Code</h2>
-<p>
+<p${this.compact}>
 The matrix below shows HTTP status code groups of captures of various media types in this ${this.type}.
 The <code>Revisit</code> records do not represent an independent media type, instead, they reflect an unchanged state of representations of resources from some of their prior observations (i.e., the same content digest for the same URI).
 The <code>TOTAL</code> column shows combined counts for each media type irrespective of their HTTP status code and the <code>TOTAL</code> row (displayed only if there are more than one media types listed) shows the combined counts of each HTTP status code group irrespective of their media types.
@@ -215,7 +222,7 @@ The <code>TOTAL</code> column shows combined counts for each media type irrespec
 ${this.gridTable(this.data.mimestatus, 'MIME')}
 
 <h2>Path Segment and Query Parameter</h2>
-<p>
+<p${this.compact}>
 The matrix below shows the number of path segments and the number of query parameters of various URIs in this ${this.type}.
 For example, the cell <code>P0</code> and <code>Q0</code> shows the number of captures of homepages of various hosts with zero path segments and zero query parameters.
 The URI <code>https://example.com/img/logo.png?width=300&height=100&screen=highres</code> has two path segments (i.e., <code>/img/logo.png</code>) and three query parameters (i.e., <code>width=300&height=100&screen=highres</code>), hence counted under the <code>P2</code> and <code>Q3</code> cell.
@@ -224,28 +231,39 @@ The <code>TOTAL</code> column shows combined counts for URIs with a specific num
 ${this.gridTable(this.data.pathquery, 'Path')}
 
 <h2>Year and Month</h2>
-<p>
+<p${this.compact}>
 The matrix below shows the number of captures of this ${this.type} observed in different calendar years and months.
 The <code>TOTAL</code> column shows combined counts for corresponding years and the <code>TOTAL</code> row (displayed only if the captures were observed across multiple calendar years) shows the combined number of captures observed in the corresponding calendar months irrespective of their years.
 </p>
 ${this.gridTable(this.data.yearmonth, 'Year', Object.keys(Object.values(this.data.yearmonth)[0]).sort(), this.toMonth)}
 
 <h2>Top <i>${this.toNum(Object.keys(this.data.tophosts).length)}</i> Out of <i>${this.toNum(this.data.hosts)}</i> Hosts</h2>
-<p>
+<p${this.compact}>
 The table below shows the top hosts of this ${this.type} based on the number of captures of URIs from each host.
 The <code>OTHERS</code> row, if present, is the sum of the longtail of hosts.
 </p>
 ${this.topHostsTable()}
 
 <h2>Random HTML Capture Samples</h2>
-${this.sampleThumbs()}
-<p>
+${this.thumbs ? `
+<button id="thumb-loader">Load ${this.thumbs == 1 ? 'a Sample' : `${this.thumbs} Samples`}</button>
+<div id="sample-thumbs">
+${this.fold.includes('thumbs') ? '' : this.sampleThumbs()}
+</div>` : ''
+}
+<p${this.compact}>
 Below is a list of random sample of captured URIs linked to their corresponding Wayback Machine playback URIs from this ${this.type}.
 The sample is chosen only from captures that were observed with the <code>text/html</code> media type and <code>200 OK</code> HTTP status code.
 Any unexpected URIs listed below (e.g., with a <code>.png/.jpg/.pdf</code> file extension) are likely a result of the Soft-404 issue from the origin server.
 </p>
 ${this.sampleCapturesList()}
 `;
+
+    if(this.thumbs) {
+      this.shadow.getElementById('thumb-loader').onclick = e => {
+        this.shadow.getElementById('sample-thumbs').innerHTML = this.sampleThumbs();
+      };
+    }
   }
 
   async fetchSummary(url) {
@@ -262,7 +280,8 @@ ${this.sampleCapturesList()}
     this.thumbs = ((parseInt(this.getAttribute('thumbs'))+1) || 5)-1;
     this.format = this.getAttribute('format') || 'local';
     this.formatter = (this.format == 'short') ? this.toSn : (this.format == 'percent') ? this.toPerc : this.toNum
-    this.drawer = this.getAttribute('drawer') || '';
+    this.fold = (this.getAttribute('fold') || '').split(/\W+/).filter(Boolean);
+    this.compact = this.fold.includes('description') ? ` title="Click to expand, if truncated..." class="compact" onclick="this.classList.toggle('compact')"` : '';
     this.type = this.getAttribute('type') || 'CDX';
     this.name = this.getAttribute('name') || '';
     this.report = this.getAttribute('report') || '';
@@ -319,7 +338,7 @@ ${this.sampleCapturesList()}
   li a {
     text-decoration: none;
   }
-  .msg{
+  .msg {
     margin: 5px;
     padding: 5px;
   }
@@ -342,15 +361,14 @@ ${this.sampleCapturesList()}
     content: attr(data-close);
   }
   .thumb-container {
-    width: 294px;
-    height: 186px;
     display: inline-block;
     overflow: hidden;
     position: relative;
   }
   .thumb {
-    width: 288px;
-    height: 180px;
+    width: calc(960px * var(--cdxsummary-thumb-scale, 0.3));
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
     border: 1px solid #333;
     border-radius: 4px;
     padding: 2px;
@@ -382,9 +400,19 @@ ${this.sampleCapturesList()}
     position: relative;
     z-index: 1;
     width: 960px;
-    height: 600px;
+    aspect-ratio: 16 / 10;
     transform-origin: 0 0;
-    transform: scale(0.3, 0.3);
+    transform: scale(var(--cdxsummary-thumb-scale, 0.3));
+  }
+  button {
+    margin-bottom: 10px;
+    padding: 5px 15px;
+  }
+  .compact {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
   }
 </style>
 <div id="container">

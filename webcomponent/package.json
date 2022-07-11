@@ -1,6 +1,6 @@
 {
   "name": "@internetarchive/cdxsummary",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A Web Component to render CDX Summary JSON files",
   "main": "cdxsummary.js",
   "module": "cdxsummary.js",
