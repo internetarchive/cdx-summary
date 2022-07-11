@@ -361,15 +361,14 @@ ${this.sampleCapturesList()}
     content: attr(data-close);
   }
   .thumb-container {
-    width: 294px;
-    height: 186px;
     display: inline-block;
     overflow: hidden;
     position: relative;
   }
   .thumb {
-    width: 288px;
-    height: 180px;
+    width: calc(960px * var(--cdxsummary-thumb-scale, 0.3));
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
     border: 1px solid #333;
     border-radius: 4px;
     padding: 2px;
@@ -401,9 +400,9 @@ ${this.sampleCapturesList()}
     position: relative;
     z-index: 1;
     width: 960px;
-    height: 600px;
+    aspect-ratio: 16 / 10;
     transform-origin: 0 0;
-    transform: scale(0.3, 0.3);
+    transform: scale(var(--cdxsummary-thumb-scale, 0.3));
   }
   button {
     margin-bottom: 10px;

@@ -35,4 +35,12 @@ The code below illustrates the usage of these attributes.
 </cdx-summary>
 ```
 
+Override the `--cdxsummary-thumb-scale` CSS variable to change the size of the thumbnail from the original `960x600` iframe dimension (default scale is set to `0.3`).
+
+```css
+:root {
+  --cdxsummary-thumb-scale: 0.25;
+}
+```
+
 An [interactive test interface](https://internetarchive.github.io/cdx-summary/webcomponent/) is available for the Web Component that renders the JSON summary.
