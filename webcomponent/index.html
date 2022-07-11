@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <title>CDX Summary Tester</title>
   <style>
+    :root {
+      --cdxsummary-thumb-scale: 0.3;
+    }
     body {
       margin: 0;
     }
@@ -46,7 +49,7 @@
   <script type="module" src="cdxsummary.js"></script>
   <script>
     const lists = {
-      "attr": ["src", "item", "name", "report", "playback", "type", "format", "thumbs", "drawer"],
+      "attr": ["src", "item", "name", "report", "playback", "type", "format", "thumbs", "fold"],
       "src": ["samples/MC.summary.json", "samples/EoT20.summary.json"],
       "item": ["mediacloud", "EndOfTerm2020WebCrawls", "epa-via-sitemap"],
       "type": ["CDX", "collection", "item"],
@@ -54,7 +57,7 @@
     };
     const l = Math.max(...(lists["attr"].map(el => el.length)));
     const q = new URLSearchParams(location.search);
-    const g = a => q.get(a) || '';
+    const g = a => q.getAll(a).join(' ');
     const f = a => `<br>&nbsp;&nbsp;&nbsp;&nbsp;${a}${'&nbsp;'.repeat(l+1-a.length)}=&nbsp;&quot;`;
     const d = a => `<datalist id="${a}-list">${lists[a].map(i => `<option value="${i}">`).join('')}</datalist>`;
     const elm = `<cdx-summary ${lists["attr"].filter(a => q.has(a)).map(i => `${i}="${g(i)}"`).join(' ')}></cdx-summary>`;
@@ -73,8 +76,12 @@
       ${f('format')}<input name="format" value="${g('format')}" placeholder="Default: local" list="format-list" class="narrow-input">&quot;
       ${d('format')}
       ${f('thumbs')}<input name="thumbs" value="${g('thumbs')}" type="number" min="0" placeholder="Thumbnail count" class="narrow-input">&quot;
-      ${f('drawer')}<input name="drawer" value="open" type="checkbox" id="drawer"${g('drawer')=='open' ? ' checked' : ''}>
-      <label for="drawer">open</label>&quot;
+      ${f('fold')}<input name="fold" value="thumbs" type="checkbox" id="fold-thumbs"${g('fold').includes('thumbs') ? ' checked' : ''}>
+                  <label for="fold-thumbs">thumbs</label>
+                  <input name="fold" value="samples" type="checkbox" id="fold-samples"${g('fold').includes('samples') ? ' checked' : ''}>
+                  <label for="fold-samples">samples</label>
+                  <input name="fold" value="description" type="checkbox" id="fold-description"${g('fold').includes('description') ? ' checked' : ''}>
+                  <label for="fold-description">description</label>&quot;
       <br>
       &gt;&lt;/cdx-summary&gt;
       <input type="submit" value="Render" class="submit">
