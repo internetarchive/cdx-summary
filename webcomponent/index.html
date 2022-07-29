@@ -4,9 +4,6 @@
   <meta charset="utf-8">
   <title>CDX Summary Tester</title>
   <style>
-    :root {
-      --cdxsummary-thumb-scale: 0.3;
-    }
     body {
       margin: 0;
     }
@@ -15,52 +12,84 @@
       color: #eee;
       padding: 10px;
       margin: 0 auto;
-      text-align: center;
       font-family: sans-serif;
     }
+    #tester-container {
+      display: grid;
+      grid-template-columns: min-content 1fr;
+    }
+    #editor {
+      height: 100vh;
+      overflow: auto;
+      background: #ccc;
+      font-family: monospace;
+      resize: horizontal;
+      display: grid;
+    }
     form {
-      max-width: 600px;
       margin: 0 auto;
+      padding: 5px;
     }
     #form-container {
-      background: #ccc;
       padding: 5px;
-      font-family: mono;
+      overflow: auto;
+      white-space: nowrap;
+      min-width: max-content;
     }
     #code-container {
-      background: #111;
-      color: #eee;
+      background: #666;
+      color: #fff;
+      max-height: 8em;
       margin: 0;
-      padding: 5px 10px;
-      text-align: center;
+      padding: 10px;
+      overflow: auto;
+      white-space: pre-wrap;
+    }
+    #summary-container {
+      height: 100vh;
       overflow: auto;
     }
     .wide-input {
-      width: 300px;
+      width: 23em;
     }
     .narrow-input {
-      width: 150px;
+      width: 11em;
+    }
+    .var-input {
+      width: 10em;
     }
     .submit {
-      float: right;
-      margin-top: -5px;
+      display: block;
+      width: 15em;
+      margin: 0 auto;
+      padding: 5px;
+      position: sticky;
+      bottom: 0;
+    }
+    label {
+      margin-left: -0.6em;
     }
   </style>
   <script type="module" src="cdxsummary.js"></script>
   <script>
     const lists = {
-      "attr": ["src", "item", "name", "report", "playback", "type", "format", "thumbs", "fold"],
-      "src": ["samples/MC.summary.json", "samples/EoT20.summary.json"],
-      "item": ["mediacloud", "EndOfTerm2020WebCrawls", "epa-via-sitemap"],
-      "type": ["CDX", "collection", "item"],
-      "format": ["short", "percent", "local"]
+      'attr': ['src', 'item', 'name', 'report', 'playback', 'type', 'format', 'thumbs', 'fold'],
+      'vars': ['main-txt-color', 'main-bg-color', 'main-font-family', 'main-font-size', 'main-margin', 'main-padding', 'mono-font-family', 'link-txt-color', 'link-txt-decoration', 'link-bg-color', 'info-txt-color', 'info-bg-color', 'info-font-family', 'info-font-size', 'info-font-style', 'info-border', 'info-border-radius', 'info-margin', 'info-padding', 'h2-txt-color', 'h2-bg-color', 'h2-font-family', 'h2-font-size', 'h2-margin', 'h2-padding', 'tbl-txt-color', 'tbl-bg-color', 'tbl-hdr-txt-color', 'tbl-hdr-bg-color', 'tbl-alt-txt-color', 'tbl-alt-bg-color', 'tbl-border', 'tbl-font-family', 'tbl-font-size', 'tbl-margin', 'btn-txt-color', 'btn-bg-color', 'btn-font-family', 'btn-font-size', 'btn-border', 'btn-border-radius', 'btn-margin', 'btn-padding', 'thumb-border', 'thumb-border-radius', 'thumb-scale'],
+      'src': ['samples/MC.summary.json', 'samples/EoT20.summary.json'],
+      'item': ['mediacloud', 'EndOfTerm2020WebCrawls', 'epa-via-sitemap'],
+      'type': ['CDX', 'collection', 'item'],
+      'format': ['short', 'percent', 'local']
     };
     const l = Math.max(...(lists["attr"].map(el => el.length)));
+    const m = Math.max(...(lists["vars"].map(el => el.length)));
     const q = new URLSearchParams(location.search);
-    const g = a => q.getAll(a).join(' ');
-    const f = a => `<br>&nbsp;&nbsp;&nbsp;&nbsp;${a}${'&nbsp;'.repeat(l+1-a.length)}=&nbsp;&quot;`;
+    const r = a => q.getAll(a).join(' ');
+    const g = a => r(a).replaceAll('"', '&quot;');
+    const f = a => `<br>&nbsp;&nbsp;${a}${'&nbsp;'.repeat(l+1-a.length)}=&nbsp;&quot;`;
+    const s = a => `<br>&nbsp;&nbsp;--cdxsummary-${a}${'&nbsp;'.repeat(m+1-a.length)}:&nbsp;`;
     const d = a => `<datalist id="${a}-list">${lists[a].map(i => `<option value="${i}">`).join('')}</datalist>`;
-    const elm = `<cdx-summary ${lists["attr"].filter(a => q.has(a)).map(i => `${i}="${g(i)}"`).join(' ')}></cdx-summary>`;
+    const stl = lists["vars"].filter(a => q.has(a)).map(i => `  --cdxsummary-${i}: ${r(i)};`).join('\n');
+    const elm = `${stl ? ['<style>', 'cdx-summary {', stl, '}', '</style>', '', ''].join('\n') : ''}<cdx-summary ${lists["attr"].filter(a => q.has(a)).map(i => `${i}="${g(i)}"`).join(' ')}></cdx-summary>`;
     const visf = `
     <form id="cdxsummary">
       &lt;cdx-summary
@@ -84,7 +113,58 @@
                   <label for="fold-description">description</label>&quot;
       <br>
       &gt;&lt;/cdx-summary&gt;
-      <input type="submit" value="Render" class="submit">
+      <br>
+      <br>&lt;style&gt;
+      <br>cdx-summary {
+        ${s('main-txt-color')}<input name="main-txt-color" value="${g('main-txt-color')}" placeholder="initial" class="var-input">;
+        ${s('main-bg-color')}<input name="main-bg-color" value="${g('main-bg-color')}" placeholder="initial" class="var-input">;
+        ${s('main-font-family')}<input name="main-font-family" value="${g('main-font-family')}" placeholder="sans-serif" class="var-input">;
+        ${s('main-font-size')}<input name="main-font-size" value="${g('main-font-size')}" placeholder="initial" class="var-input">;
+        ${s('main-margin')}<input name="main-margin" value="${g('main-margin')}" placeholder="0" class="var-input">;
+        ${s('main-padding')}<input name="main-padding" value="${g('main-padding')}" placeholder="5px" class="var-input">;
+        ${s('mono-font-family')}<input name="mono-font-family" value="${g('mono-font-family')}" placeholder="monospace" class="var-input">;
+        ${s('link-txt-color')}<input name="link-txt-color" value="${g('link-txt-color')}" placeholder="blue" class="var-input">;
+        ${s('link-txt-decoration')}<input name="link-txt-decoration" value="${g('link-txt-decoration')}" placeholder="underline" class="var-input">;
+        ${s('link-bg-color')}<input name="link-bg-color" value="${g('link-bg-color')}" placeholder="inherit" class="var-input">;
+        ${s('info-txt-color')}<input name="info-txt-color" value="${g('info-txt-color')}" placeholder="inherit" class="var-input">;
+        ${s('info-bg-color')}<input name="info-bg-color" value="${g('info-bg-color')}" placeholder="inherit" class="var-input">;
+        ${s('info-font-family')}<input name="info-font-family" value="${g('info-font-family')}" placeholder="inherit" class="var-input">;
+        ${s('info-font-size')}<input name="info-font-size" value="${g('info-font-size')}" placeholder="inherit" class="var-input">;
+        ${s('info-font-style')}<input name="info-font-style" value="${g('info-font-style')}" placeholder="italic" class="var-input">;
+        ${s('info-border')}<input name="info-border" value="${g('info-border')}" placeholder="initial" class="var-input">;
+        ${s('info-border-radius')}<input name="info-border-radius" value="${g('info-border-radius')}" placeholder="initial" class="var-input">;
+        ${s('info-margin')}<input name="info-margin" value="${g('info-margin')}" placeholder="5px" class="var-input">;
+        ${s('info-padding')}<input name="info-padding" value="${g('info-padding')}" placeholder="5px" class="var-input">;
+        ${s('h2-txt-color')}<input name="h2-txt-color" value="${g('h2-txt-color')}" placeholder="inherit" class="var-input">;
+        ${s('h2-bg-color')}<input name="h2-bg-color" value="${g('h2-bg-color')}" placeholder="inherit" class="var-input">;
+        ${s('h2-font-family')}<input name="h2-font-family" value="${g('h2-font-family')}" placeholder="inherit" class="var-input">;
+        ${s('h2-font-size')}<input name="h2-font-size" value="${g('h2-font-size')}" placeholder="1.5em" class="var-input">;
+        ${s('h2-margin')}<input name="h2-margin" value="${g('h2-margin')}" placeholder="1em 0 0.7em" class="var-input">;
+        ${s('h2-padding')}<input name="h2-padding" value="${g('h2-padding')}" placeholder="initial" class="var-input">;
+        ${s('tbl-txt-color')}<input name="tbl-txt-color" value="${g('tbl-txt-color')}" placeholder="inherit" class="var-input">;
+        ${s('tbl-bg-color')}<input name="tbl-bg-color" value="${g('tbl-bg-color')}" placeholder="inherit" class="var-input">;
+        ${s('tbl-hdr-txt-color')}<input name="tbl-hdr-txt-color" value="${g('tbl-hdr-txt-color')}" placeholder="white" class="var-input">;
+        ${s('tbl-hdr-bg-color')}<input name="tbl-hdr-bg-color" value="${g('tbl-hdr-bg-color')}" placeholder="gray" class="var-input">;
+        ${s('tbl-alt-txt-color')}<input name="tbl-alt-txt-color" value="${g('tbl-alt-txt-color')}" placeholder="inherit" class="var-input">;
+        ${s('tbl-alt-bg-color')}<input name="tbl-alt-bg-color" value="${g('tbl-alt-bg-color')}" placeholder="inherit" class="var-input">;
+        ${s('tbl-border')}<input name="tbl-border" value="${g('tbl-border')}" placeholder="1px solid tbl-hdr-bg-color" class="var-input">;
+        ${s('tbl-font-family')}<input name="tbl-font-family" value="${g('tbl-font-family')}" placeholder="inherit" class="var-input">;
+        ${s('tbl-font-size')}<input name="tbl-font-size" value="${g('tbl-font-size')}" placeholder="inherit" class="var-input">;
+        ${s('tbl-margin')}<input name="tbl-margin" value="${g('tbl-margin')}" placeholder="initial" class="var-input">;
+        ${s('btn-txt-color')}<input name="btn-txt-color" value="${g('btn-txt-color')}" placeholder="tbl-hdr-txt-color" class="var-input">;
+        ${s('btn-bg-color')}<input name="btn-bg-color" value="${g('btn-bg-color')}" placeholder="tbl-hdr-bg-color" class="var-input">;
+        ${s('btn-font-family')}<input name="btn-font-family" value="${g('btn-font-family')}" placeholder="inherit" class="var-input">;
+        ${s('btn-font-size')}<input name="btn-font-size" value="${g('btn-font-size')}" placeholder="inherit" class="var-input">;
+        ${s('btn-border')}<input name="btn-border" value="${g('btn-border')}" placeholder="tbl-border" class="var-input">;
+        ${s('btn-border-radius')}<input name="btn-border-radius" value="${g('btn-border-radius')}" placeholder="5px" class="var-input">;
+        ${s('btn-margin')}<input name="btn-margin" value="${g('btn-margin')}" placeholder="0 0 10px" class="var-input">;
+        ${s('btn-padding')}<input name="btn-padding" value="${g('btn-padding')}" placeholder="5px 10px" class="var-input">;
+        ${s('thumb-border')}<input name="thumb-border" value="${g('thumb-border')}" placeholder="tbl-border" class="var-input">;
+        ${s('thumb-border-radius')}<input name="thumb-border-radius" value="${g('thumb-border-radius')}" placeholder="5px" class="var-input">;
+        ${s('thumb-scale')}<input name="thumb-scale" value="${g('thumb-scale')}" type="number" placeholder="0.3" min="0.1" step="0.01" class="var-input">;
+      <br>}
+      <br>&lt;/style&gt;
+      <br><input type="submit" value="RENDER ELEMENT ➔" class="submit">
     </form>`;
 
     document.addEventListener('formdata', e => Array.from(e.formData).filter(([k, v]) => v == '').map(([k, v]) => e.formData.delete(k)));
@@ -96,9 +176,15 @@
   </script>
 </head>
 <body>
-  <h1>CDX Summary Tester</h1>
-  <div id="form-container"></div>
-  <pre id="code-container"><code id="code-out"></code></pre>
-  <div id="summary-container"></div>
+  <div id="tester-container">
+    <div id="editor">
+      <div>
+        <h1>CDX Summary Tester</h1>
+      </div>
+      <div id="form-container"></div>
+      <pre id="code-container"><code id="code-out"></code></pre>
+    </div>
+    <div id="summary-container"></div>
+  </div>
 </body>
 </html>
