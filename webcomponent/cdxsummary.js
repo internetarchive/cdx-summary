@@ -308,6 +308,12 @@ ${this.sampleCapturesList()}
     margin: var(--cdxsummary-main-margin);
     padding: var(--cdxsummary-main-padding, 5px);
   }
+  #container > *:first-child {
+    margin-top: 0;
+  }
+  #container > *:last-child, .samples ul {
+    margin-bottom: 0;
+  }
   pre, code {
     font-family: var(--cdxsummary-mono-font-family, monospace);
   }
