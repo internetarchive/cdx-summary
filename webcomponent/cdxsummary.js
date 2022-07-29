@@ -191,7 +191,7 @@ ${this.data.samples.map(s => s.concat(s[1].replace(/^(https?:\/\/)?(www\.)?/i, '
   renderSummary() {
     const container = this.shadow.getElementById('container');
     if(this.data['msg']) {
-      container.innerHTML = `<p class="msg">${this.data['msg']}</p>`;
+      container.innerHTML = `<p class="info"> ${this.data['msg']}</p>`;
       return;
     }
 
@@ -246,7 +246,7 @@ ${this.topHostsTable()}
 
 <h2>Random HTML Capture Samples</h2>
 ${this.thumbs ? `
-<button id="thumb-loader">Load ${this.thumbs == 1 ? 'a Sample' : `${this.thumbs} Samples`}</button>
+<button id="thumb-loader">Load ${this.thumbs == 1 ? 'a sample' : `${this.thumbs} samples`}</button>
 <div id="sample-thumbs">
 ${this.fold.includes('thumbs') ? '' : this.sampleThumbs()}
 </div>` : ''
@@ -301,8 +301,51 @@ ${this.sampleCapturesList()}
     this.shadow.innerHTML = `
 <style>
   #container {
-    padding: 5px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: var(--cdxsummary-main-txt-color);
+    background: var(--cdxsummary-main-bg-color);
+    font-family: var(--cdxsummary-main-font-family, sans-serif);
+    font-size: var(--cdxsummary-main-font-size);
+    margin: var(--cdxsummary-main-margin);
+    padding: var(--cdxsummary-main-padding, 5px);
+  }
+  pre, code {
+    font-family: var(--cdxsummary-mono-font-family, monospace);
+  }
+  a {
+    color: var(--cdxsummary-link-txt-color, blue);
+    background: var(--cdxsummary-link-bg-color);
+    text-decoration: var(--cdxsummary-link-txt-decoration, underline);
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+  .info {
+    color: var(--cdxsummary-info-txt-color);
+    background: var(--cdxsummary-info-bg-color);
+    font-family: var(--cdxsummary-info-font-family, var(--cdxsummary-main-font-family, sans-serif));
+    font-size: var(--cdxsummary-info-font-size);
+    font-style: var(--cdxsummary-info-font-style, italic);
+    border: var(--cdxsummary-info-border);
+    border-radius: var(--cdxsummary-info-border-radius);
+    margin: var(--cdxsummary-info-margin, 5px);
+    padding: var(--cdxsummary-info-padding, 5px);
+  }
+  .info::before {
+    content: "i";
+    border: 1px solid;
+    border-radius: 0.6em;
+    line-height: 1em;
+    width: 1em;
+    display: inline-block;
+    text-align: center;
+  }
+  h2 {
+    color: var(--cdxsummary-h2-txt-color);
+    background: var(--cdxsummary-h2-bg-color);
+    font-family: var(--cdxsummary-h2-font-family);
+    font-size: var(--cdxsummary-h2-font-size, 1.5em);
+    margin: var(--cdxsummary-h2-margin, 1em 0 0.7em);
+    padding: var(--cdxsummary-h2-padding);
   }
   table {
     border-collapse: collapse;
@@ -310,9 +353,15 @@ ${this.sampleCapturesList()}
     max-width: fit-content;
     overflow-x: auto;
     white-space: nowrap;
+    color: var(--cdxsummary-tbl-txt-color);
+    background: var(--cdxsummary-tbl-bg-color);
+    font-family: var(--cdxsummary-tbl-font-family);
+    font-size: var(--cdxsummary-tbl-font-size);
+    margin: var(--cdxsummary-tbl-margin);
   }
   tr:nth-child(even), li:nth-child(even) {
-    background-color: #eee;
+    color: var(--cdxsummary-tbl-alt-txt-color);
+    background: var(--cdxsummary-tbl-alt-bg-color);
   }
   th, td {
     text-align: right;
@@ -322,43 +371,25 @@ ${this.sampleCapturesList()}
     text-align: left;
     padding: 2px 10px 2px 2px;
   }
-  table, thead, tfoot {
-    border-bottom: 1px solid #333;
-    border-top: 1px solid #333;
+  table, thead {
+    border-bottom: var(--cdxsummary-tbl-border, 1px solid var(--cdxsummary-tbl-hdr-bg-color, gray));
+  }
+  table, tfoot {
+    border-top: var(--cdxsummary-tbl-border, 1px solid var(--cdxsummary-tbl-hdr-bg-color, gray));
   }
   thead, tfoot {
-    background: #777;
-    color: #eee;
+    color: var(--cdxsummary-tbl-hdr-txt-color, white);
+    background: var(--cdxsummary-tbl-hdr-bg-color, gray);
   }
-  ul {
-    word-break: break-all;
-    list-style-position: inside;
-    padding-inline-start: 0;
-  }
-  li a {
-    text-decoration: none;
-  }
-  .msg {
-    margin: 5px;
-    padding: 5px;
-  }
-  .msg, .info {
-    font-style: italic;
-  }
-  .info::before {
-    content: "🛈 ";
-  }
-  summary {
-    cursor: pointer;
-  }
-  details {
-    margin-bottom: 20px;
-  }
-  details.samples[open] summary::after {
-    content: attr(data-open);
-  }
-  details.samples:not([open]) summary::after {
-    content: attr(data-close);
+  button {
+    color: var(--cdxsummary-btn-txt-color, var(--cdxsummary-tbl-hdr-txt-color, white));
+    background: var(--cdxsummary-btn-bg-color, var(--cdxsummary-tbl-hdr-bg-color, gray));
+    font-family: var(--cdxsummary-btn-font-family);
+    font-size: var(--cdxsummary-btn-font-size);
+    border: var(--cdxsummary-btn-border, var(--cdxsummary-tbl-border, 1px solid var(--cdxsummary-tbl-hdr-bg-color, gray)));
+    border-radius: var(--cdxsummary-btn-border-radius, 5px);
+    margin: var(--cdxsummary-btn-margin, 0 0 10px);
+    padding: var(--cdxsummary-btn-padding, 5px 10px);
   }
   .thumb-container {
     display: inline-block;
@@ -369,22 +400,14 @@ ${this.sampleCapturesList()}
     width: calc(960px * var(--cdxsummary-thumb-scale, 0.3));
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    border: 1px solid #333;
-    border-radius: 4px;
+    border: var(--cdxsummary-thumb-border, var(--cdxsummary-tbl-border, 1px solid var(--cdxsummary-tbl-hdr-bg-color, gray)));
+    border-radius: var(--cdxsummary-thumb-border-radius, 5px);
     padding: 2px;
     background: linear-gradient(45deg, #eee, #333, #eee);
     background-position: center 2px;
     background-size: 50% 2px;
     background-repeat: no-repeat;
     animation: loader 10s ease infinite;
-  }
-  @keyframes loader {
-    0%, 100% {
-      background-position: left 10px top 2px;
-    }
-    50% {
-      background-position: right 10px top 2px;
-    }
   }
   .thumb a {
     display: block;
@@ -404,9 +427,30 @@ ${this.sampleCapturesList()}
     transform-origin: 0 0;
     transform: scale(var(--cdxsummary-thumb-scale, 0.3));
   }
-  button {
-    margin-bottom: 10px;
-    padding: 5px 15px;
+  @keyframes loader {
+    0%, 100% {
+      background-position: left 10px top 2px;
+    }
+    50% {
+      background-position: right 10px top 2px;
+    }
+  }
+  summary {
+    cursor: pointer;
+  }
+  details {
+    margin-bottom: 20px;
+  }
+  details.samples[open] summary::after {
+    content: attr(data-open);
+  }
+  details.samples:not([open]) summary::after {
+    content: attr(data-close);
+  }
+  ul {
+    word-break: break-all;
+    list-style-position: inside;
+    padding-inline-start: 0;
   }
   .compact {
     overflow: hidden;
