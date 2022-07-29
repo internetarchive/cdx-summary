@@ -45,6 +45,23 @@
       overflow: auto;
       white-space: pre-wrap;
     }
+    #code-out {
+      pointer-events: none;
+    }
+    #code-out::before {
+      content: '🗎 COPY';
+      float: right;
+      background: #333;
+      border: 1px dotted #fff;
+      border-radius: 3px;
+      font-size: 1em;
+      line-height: 1em;
+      margin-left: -20px;
+      padding: 2px 2px 0;
+      cursor: pointer;
+      opacity: 0.5;
+      pointer-events: all;
+    }
     #summary-container {
       height: 100vh;
       overflow: auto;
@@ -89,7 +106,7 @@
     const s = a => `<br>&nbsp;&nbsp;--cdxsummary-${a}${'&nbsp;'.repeat(m+1-a.length)}:&nbsp;`;
     const d = a => `<datalist id="${a}-list">${lists[a].map(i => `<option value="${i}">`).join('')}</datalist>`;
     const stl = lists["vars"].filter(a => q.has(a)).map(i => `  --cdxsummary-${i}: ${r(i)};`).join('\n');
-    const elm = `${stl ? ['<style>', 'cdx-summary {', stl, '}', '</style>', '', ''].join('\n') : ''}<cdx-summary ${lists["attr"].filter(a => q.has(a)).map(i => `${i}="${g(i)}"`).join(' ')}></cdx-summary>`;
+    const elm = `${stl ? ['<style>', 'cdx-summary {', stl, '}', '</style>', '', ''].join('\n') : ''}<${['cdx-summary'].concat(lists["attr"].filter(a => q.has(a)).map(i => `${i}="${g(i)}"`)).join(' ')}></cdx-summary>`;
     const visf = `
     <form id="cdxsummary">
       &lt;cdx-summary
@@ -172,6 +189,11 @@
       document.getElementById('form-container').innerHTML = visf;
       document.getElementById('code-out').innerText = elm;
       document.getElementById('summary-container').innerHTML = elm;
+      document.getElementById('code-out').addEventListener('click', e => {
+        navigator.clipboard.writeText(e.target.innerText);
+        e.target.style.opacity = 0.2;
+        setTimeout(() => e.target.style.opacity = 1, 500);
+      });
     };
   </script>
 </head>
