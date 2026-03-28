@@ -121,7 +121,7 @@ export class CDXSummary extends HTMLElement {
     </tr>`
   }).join('\n')}
   </tbody>
-  ${Object.keys(obj).length > 1 && `
+  ${Object.keys(obj).length <= 1 ? `` : `
   <tfoot>
     <tr>
       <th scope="col">TOTAL</th>
@@ -153,7 +153,7 @@ export class CDXSummary extends HTMLElement {
     </tr>`
   }).join('\n')}
   </tbody>
-  ${otherHostsCount > 0 && `
+  ${otherHostsCount <= 0 ? `` : `
   <tfoot>
     <tr>
       <th scope="row">OTHERS (${this.toNum(otherHostsCount)} Hosts)</th>
