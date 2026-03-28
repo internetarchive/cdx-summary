@@ -8,18 +8,20 @@ on:
       - "webcomponent/package.json"
   workflow_dispatch:
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   publish:
     name: Publish NPM Package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Node 16
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v6
+      - name: Set up Node 24
+        uses: actions/setup-node@v6
         with:
-          node-version: "16.x"
-          registry-url: "https://registry.npmjs.org"
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
       - name: Publish package on NPM
         run: cd webcomponent && npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PASSWORD }}
