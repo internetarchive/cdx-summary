@@ -11,12 +11,12 @@ export class CDXSummary extends HTMLElement {
 
   toFs(s) {
     let i = Math.log(s)/Math.log(1024) | 0;
-    return `${Number((s/Math.pow(1024, i)).toFixed(2))} ${['B', 'KB', 'MB', 'GB', 'TB'][i]}`;
+    return `${Number((s/Math.pow(1024, i)).toFixed(2))} ${['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][i]}`;
   }
 
   toSn(n) {
     let i = Math.log10(n)/3 | 0;
-    return `${Number((n/Math.pow(1000, i)).toFixed(1))}${['', 'K', 'M', 'B', 'T'][i]}`;
+    return `${Number((n/Math.pow(1000, i)).toFixed(1))}${['', 'K', 'M', 'B', 'T', 'Q'][i]}`;
   }
 
   toDate(dt) {
